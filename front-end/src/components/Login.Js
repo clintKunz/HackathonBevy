@@ -46,8 +46,26 @@ const StyledLoginComp = styled.div`
       border: 1px solid black;
       background: none;
       width: 50%;
-      transition: all 0.3s ease-in-out;
-      :hover {
+      transition: all 0.3s 0.3s ease-in-out;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 3px;
+        background: black;
+        transform: scaleY(0);
+        transition: transform 0.3s, width 0.3s cubic-bezier(1, 0, 0, 1) 0.3s,
+          background-color 0.2s;
+      }
+      &:hover::before {
+        transform: scaleY(1);
+        width: 100%;
+      }
+      &:hover {
+        color: white;
       }
     }
   }

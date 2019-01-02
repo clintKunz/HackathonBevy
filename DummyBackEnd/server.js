@@ -1,6 +1,8 @@
+const express = require('express');
+const db = require('./database/dbConfig.js');
 const server = express();
 server.use(express.json());
-const db = require('./database/dbConfig.js');
+
 
 server.get('/', (req,res) => {
     res.status(200).json({Server : "Running Properly"});
@@ -18,3 +20,7 @@ server.get('/api/user/:id', (req,res) => {
         res.status(500).json(err)
     })
 })
+
+module.exports = {
+    server,
+};

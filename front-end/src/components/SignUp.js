@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StyledSignUpComp = styled.div`
   font-family: sans-serif;
-  width: 30rem;
+  width: 28rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -169,7 +169,7 @@ class SignUpForm extends React.Component {
             />
           </div>
           <button className="sign-up-btn" type="submit">
-            {this.state.loading ? "Loading" : "Sign Up"}
+            <span>{this.state.loading ? "Loading" : "Sign Up"}</span>
           </button>
         </form>
         <Link className="log-in-btn" to="/login">

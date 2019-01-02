@@ -7,12 +7,14 @@ const Nav = styled.nav`
   width: 100%;
   border-bottom: 1.5px solid black;
   padding-bottom: -30px;
+  margin-top: 15px;
+  padding-bottom: 5px;
 `;
 
 const NavHeader = styled.p`
   margin-left: 18px;
   font-family: ubuntu;
-  font-size: 28px;
+  font-size: 2.9rem;
 `;
 
 const ElementsContainer = styled.div`
@@ -23,7 +25,7 @@ const ElementsContainer = styled.div`
 `;
 
 const Elements = styled.a`
-  font-size: 15px;
+  font-size: 1.5rem;
   font-family: ubuntu;
   text-decoration: none;
   color: black;

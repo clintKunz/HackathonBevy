@@ -48,6 +48,10 @@ const StyledLoginComp = styled.div`
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
+      span {
+        position: relative;
+        z-index: 10;
+      }
       &::before {
         content: "";
         position: absolute;
@@ -125,7 +129,7 @@ class LogIn extends React.Component {
             />
           </div>
           <button className="login-btn" type="submit">
-            Log In
+            <span>Log In</span>
           </button>
         </form>
         <Link className="sign-up-btn" to="/signup">

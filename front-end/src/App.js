@@ -8,7 +8,7 @@ import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 
 //components
 import Navigation from "./components/Navigation";
-import LogIn from "./components/LogIn.js";
+import LogIn from "./components/Login.js";
 library.add(faEnvelope, faKey);
 const Container = styled.div`
   max-width: 500px;

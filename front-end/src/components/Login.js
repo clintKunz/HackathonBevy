@@ -18,7 +18,6 @@ const StyledLoginComp = styled.div`
   h1 {
     font-size: 36px;
     border-bottom: 2px solid black;
-    // border-radius: 3%;
     margin-bottom: 30px;
     padding: 12px 0;
   }
@@ -43,14 +42,15 @@ const StyledLoginComp = styled.div`
     }
     .login-btn {
       margin: 20px auto 30px auto;
-      border: 1px solid black;
       background: none;
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
+      border: 1px solid black;
       span {
         position: relative;
         z-index: 10;
+        border: none;
       }
       &::before {
         content: "";

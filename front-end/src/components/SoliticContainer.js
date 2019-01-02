@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class MainView extends Component {
+class SolicitContainer extends Component {
 
     render() {
         return (
-            
+            <div>hi</div>
         );
     }
 }
 
-export default MainView;
+export default SolicitContainer;

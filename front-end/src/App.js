@@ -9,6 +9,8 @@ import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 //components
 import Navigation from "./components/Navigation";
 import LogIn from "./components/Login.js";
+import SolicitContainer from './components/SoliticContainer';
+
 library.add(faEnvelope, faKey);
 const Container = styled.div`
   max-width: 500px;
@@ -22,6 +24,7 @@ class App extends React.Component {
     return (
       <Container>
         <Navigation />
+        <SolicitContainer />
         <Route exact path="/login" render={props => <LogIn {...props} />} />
       </Container>
     );

@@ -17,6 +17,7 @@ import Navigation from "./components/Navigation";
 import LogIn from "./components/Login.js";
 import SolicitContainer from "./components/SoliticContainer";
 import SignUp from "./components/SignUp";
+import SolicitPage from "./components/SolicitPage";
 
 library.add(faEnvelope, faKey, faUser, faMapPin, faCreditCard);
 const Container = styled.div`
@@ -34,6 +35,11 @@ class App extends React.Component {
         <SolicitContainer />
         <Route exact path="/login" render={props => <LogIn {...props} />} />
         <Route exact path="/signup" render={props => <SignUp {...props} />} />
+        <Route
+          exact
+          path="/solicit"
+          render={props => <SolicitPage {...props} />}
+        />
       </Container>
     );
   }

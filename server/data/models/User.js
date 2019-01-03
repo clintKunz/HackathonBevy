@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt-nodejs');
+const bcrypt = require('bcrypt');
 const UserContract = require('../contracts/User');
 
 const UserSchema = new mongoose.Schema(UserContract);
@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema(UserContract);
 const salt = bcrypt.genSaltSync(14);
 
 UserSchema.pre('save', function hashPassword(next) {
-  bcrypt.hash(this.password, salt, null, (err, hash) => {
+  bcrypt.hash(this.password, salt, (err, hash) => {
     if (err) {
       return next(err);
     }

@@ -1,5 +1,4 @@
 /* eslint global-require: 0 */
-const mongoose = require('mongoose');
 const express = require('express');
 const path = require('path');
 const server = require('./server/server');

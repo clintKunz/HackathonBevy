@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 module.exports = {
   firstName: { type: String, maxlength: 64, required: true },
   lastName: { type: String, maxlength: 64, required: true},
-  email: { type: String, inputType: 'email', required: true },
+  email: { type: String, inputType: 'email', required: true, unique: true, },
   description: { type: String, maxlength: 256 },
   zipCode: { type: String, maxlength: 5 },
   creditScore: { type: Number },

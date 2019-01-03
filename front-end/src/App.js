@@ -21,6 +21,7 @@ import SolicitPage from "./components/SolicitPage";
 import CreateSolicitBorrow from './components/CreateSolicitBorrow';
 import CreateSolicitLend from './components/CreateSolicitLend';
 import Background from "./components/Background";
+
 library.add(faEnvelope, faKey, faUser, faMapPin, faCreditCard);
 const Container = styled.div`
   position: relative;

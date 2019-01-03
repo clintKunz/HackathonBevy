@@ -15,6 +15,7 @@ const SolicitDiv = styled.div`
     -webkit-border-top-right-radius: 0;
     border-radius: 100px;
     border-top-right-radius: 0;
+    margin-bottom : 20px;
 `;
 
 class SolicitBorrow extends Component {

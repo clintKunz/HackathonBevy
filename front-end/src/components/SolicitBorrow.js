@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const SolicitDiv = styled.div`
     display: flex; 
     flex-direction: column; 
+    color: white; 
+    border: 1px solid green; 
 `;
 
 class SolicitBorrow extends Component {

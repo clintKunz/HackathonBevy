@@ -8,13 +8,13 @@ const SolicitDiv = styled.div`
     align-items : center;
     font-size:1.4rem;
     color: white; 
-    width : 75%;
-    height : 200px;
+    width : 66%;
+    height : 230px;
     border: 2px solid green; 
-    -webkit-border-radius: 100px;
-    -webkit-border-top-right-radius: 0;
+    -webkit-border-radius: 50%;
+    -webkit-border-top-left-radius: 0px;
     border-radius: 100px;
-    border-top-right-radius: 0;
+    border-top-left-radius:0px;
     margin-bottom : 20px;
 `;
 

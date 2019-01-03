@@ -13,6 +13,7 @@ class SolicitContainer extends Component {
     state = {
         solicitsBorrows: [{
             id: 100000,
+            name: 'Chris Smith',
             userId: 1023948092134,
             loanAmt: 1000,
             lengthMonths: 6,
@@ -38,6 +39,7 @@ class SolicitContainer extends Component {
     componentDidMount() {
         axios.get("http://localhost:9000/api/solicits/borrows")
             .then(res => {
+                console.log(res);
                 this.setState({
                     solicitsBorrows: res.data
                 })

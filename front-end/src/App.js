@@ -39,4 +39,4 @@ class App extends React.Component {
   }
 }
 
-export default Auth(App);
+export default App;

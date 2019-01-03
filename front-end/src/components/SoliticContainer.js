@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import SolicitBorrow from './SolicitBorrow';
 import SolicitLend from './SolicitLend';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
     max-width: 450px; 
@@ -59,6 +60,8 @@ class SolicitContainer extends Component {
     render(props) {
         return (
             <Wrapper>
+                <Link to="/create-borrow">Need to Borrow Money?</Link>
+                <Link to="/create-lend">Willing to Lend Money?</Link>
                 {this.state.solicitsBorrows.map(borrow => <SolicitBorrow key={borrow.id} {...props} solicitBorrow={borrow} />)}
                 {this.state.solicitLends.map(lend => <SolicitLend key={lend.id} {...props} solicitLend={lend} />)}
             </Wrapper>

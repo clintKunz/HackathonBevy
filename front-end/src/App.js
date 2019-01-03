@@ -25,6 +25,7 @@ const Container = styled.div`
   margin: 0 auto;
   height: 100vh;
   border: 1px solid red;
+  background: #0e0e0e;
 `;
 
 class App extends React.Component {

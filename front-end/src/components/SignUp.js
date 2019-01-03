@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../images/Logo.png";
 
 const StyledSignUpComp = styled.div`
   font-family: sans-serif;
@@ -10,18 +11,23 @@ const StyledSignUpComp = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  color: black;
+  color: #d1e7df;
   transform: translate(-50%, -50%);
   text-align: center;
+  background: #0e0e0e;
+  .logo {
+    width: 50%;
+  }
   h1 {
     font-size: 5rem;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #5abd9a;
     margin-bottom: 3rem;
     padding: 1.2rem 0;
   }
   form {
     display: flex;
     flex-direction: column;
+
     div {
       display: flex;
       justify-content: space-between;
@@ -36,15 +42,15 @@ const StyledSignUpComp = styled.div`
     input {
       outline: none;
       border: none;
-      color: black;
+      color: #5abd9a;
       background: none;
       font-size: 2rem;
       margin: 0 10px;
       width: 80%;
-      border-bottom: 2px solid black;
+      border-bottom: 2px solid #5abd9a;
     }
     input:focus {
-      border-bottom: 2px solid green;
+      border-bottom: 2px solid #5abd9a;
     }
 
     .sign-up-btn {
@@ -54,8 +60,9 @@ const StyledSignUpComp = styled.div`
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
-      border: 1px solid black;
+      border: 1px solid #5abd9a;
       outline: 0;
+      color: white;
       cursor: pointer;
       span {
         position: relative;
@@ -69,7 +76,7 @@ const StyledSignUpComp = styled.div`
         left: 0;
         height: 100%;
         width: 3px;
-        background: black;
+        background: #5abd9a;
         transform: scaleY(0);
         transition: transform 0.3s, width 0.3s cubic-bezier(1, 0, 0, 1) 0.3s,
           background-color 0.2s;
@@ -78,15 +85,12 @@ const StyledSignUpComp = styled.div`
         transform: scaleY(1);
         width: 100%;
       }
-      &:hover {
-        color: white;
-      }
     }
   }
   .log-in-btn {
     text-decoration: none;
-    border-bottom: 1px solid black;
-    color: black;
+    border-bottom: 1px solid #5abd9a;
+    color: #5abd9a;
   }
 `;
 class SignUpForm extends React.Component {
@@ -123,6 +127,7 @@ class SignUpForm extends React.Component {
   render() {
     return (
       <StyledSignUpComp>
+        <img src={Logo} alt="logo" className="logo" />
         <h1>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
           <div>

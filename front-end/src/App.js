@@ -33,7 +33,11 @@ class App extends React.Component {
     return (
       <Container>
         <Navigation />
-        <Route exact path="/solicits" render={props => <SolicitContainer {...props} />} />
+        <Route
+          exact
+          path="/solicits"
+          render={props => <SolicitContainer {...props} />}
+        />
         <Route exact path="/login" render={props => <LogIn {...props} />} />
         <Route exact path="/signup" render={props => <SignUp {...props} />} />
         <Route

@@ -19,6 +19,8 @@ import SolicitContainer from "./components/SoliticContainer";
 import SignUp from "./components/SignUp";
 import SolicitPage from "./components/SolicitPage";
 import Background from "./components/Background";
+
+import {register, login} from './helpers/api';
 library.add(faEnvelope, faKey, faUser, faMapPin, faCreditCard);
 const Container = styled.div`
   position: relative;
@@ -29,6 +31,9 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
+  componentDidMount() {
+    login('asdf@example.com', 'password');
+  }
   render() {
     return (
       <Container>

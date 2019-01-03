@@ -25,7 +25,6 @@ router
         res.status(200).json({ user });
       })
       .catch((err) => {
-        console.log(err);
         res.status(500).json({ message: err.message });
       });
   })
@@ -39,13 +38,19 @@ router
         user
           .validify(password)
           .then((passwordIsValid) => {
+            console.log(passwordIsValid)
             if (!passwordIsValid) {
               return res.status(401).json({ message: 'Bad credentials.' });
             }
+
             req.session.userId = user._id;
             res.status(200).json(user);
-          }).catch(err => res.status(500).json(err));
-      }).catch(err => res.status(500).json(err));
+          }).catch(err => res.status(500).json({ message: err.message || 'Failed to log in.'}));
+      }).catch(err => {
+        console.log(err);
+        res.status(500).json({ message: err.message || 'Failed to find user.' })
+
+      });
   })
   .get('/profile', (req, res) => {
     const { userId } = req.session;

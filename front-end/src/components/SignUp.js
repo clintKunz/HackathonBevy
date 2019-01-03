@@ -1,62 +1,62 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
-// import axios from "axios";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-//font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//custom css
-import './landingPage.css';
 
-const StyledLoginComp = styled.div`
+const StyledSignUpComp = styled.div`
   font-family: sans-serif;
   font-size: 1.6rem;
-  width: 280px;
+  width: 28rem;
   position: absolute;
   top: 50%;
   left: 50%;
   color: black;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index:10;
   h1 {
-    font-size: 36px;
+    font-size: 5rem;
     border-bottom: 2px solid black;
-    margin-bottom: 30px;
-    padding: 12px 0;
+    margin-bottom: 3rem;
+    padding: 1.2rem 0;
   }
   form {
     display: flex;
     flex-direction: column;
     div {
       display: flex;
+      justify-content: space-between;
       width: 100%;
-      font-size: 20px;
-      padding: 10px 0;
-      margin: 10px 0;
+      font-size: 3rem;
+      padding: 1rem 0;
+      margin: 1rem 0;
+    }
+    .map-pin {
+      margin-left: 0.7rem;
     }
     input {
       outline: none;
       border: none;
       color: black;
       background: none;
-      font-size: 20px;
+      font-size: 2rem;
       margin: 0 10px;
+      width: 80%;
       border-bottom: 2px solid black;
     }
     input:focus {
       border-bottom: 2px solid green;
     }
-    .login-btn {
-      margin: 20px auto 30px auto;
+
+    .sign-up-btn {
+      margin: 2rem auto 3rem auto;
       padding: 0.5rem 0;
       background: none;
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
       border: 1px solid black;
-      cursor: pointer;
       outline: 0;
+      cursor: pointer;
       span {
         position: relative;
         z-index: 10;
@@ -83,83 +83,114 @@ const StyledLoginComp = styled.div`
       }
     }
   }
-  .sign-up-btn {
+  .log-in-btn {
     text-decoration: none;
     border-bottom: 1px solid black;
     color: black;
   }
 `;
-
-class LogIn extends React.Component {
+class SignUpForm extends React.Component {
   constructor() {
     super();
     this.state = {
       username: "",
       password: "",
+      email: "",
+      zipCode: "",
+      creditScore: "",
       loading: false
     };
   }
   handleInputChange = e => {
-    e.preventDefault();
     this.setState({
       [e.target.name]: e.target.value
     });
   };
-  handleSumbmit = e => {
+
+  handleSubmit = e => {
     e.preventDefault();
-    const { username, password } = this.state;
-    console.log("submitting");
-    //axios calls here
+    this.setState(
+      {
+        loading: !this.state.loading
+      },
+      () => {
+        const { username, password } = this.state;
+        console.log("loading!!");
+      }
+    );
   };
+
   render() {
     return (
-      <StyledLoginComp>
-        <h1>Bevy</h1>
-        <form onSubmit={this.handleSumbmit}>
+      <StyledSignUpComp>
+        <h1>Sign Up</h1>
+        <form onSubmit={this.handleSubmit}>
           <div>
-            <FontAwesomeIcon icon="envelope" />
+            <FontAwesomeIcon icon="user" />
             <input
-              type="text"
-              placeholder="Enter Username"
               name="username"
+              type="username"
+              placeholder="Enter Username"
               value={this.state.username}
               onChange={this.handleInputChange}
-              autoComplete="off"
-              autoFocus
+              required
             />
           </div>
           <div>
             <FontAwesomeIcon icon="key" />
             <input
+              name="password"
               type="password"
               placeholder="Enter Password"
-              name="password"
               value={this.state.password}
               onChange={this.handleInputChange}
-              autoComplete="off"
+              required
             />
           </div>
-          <button className="login-btn" type="submit">
-            <span>{this.state.loading ? "Loading" : "Log In"}</span>
+
+          <div>
+            <FontAwesomeIcon icon="envelope" />
+            <input
+              type="text"
+              placeholder="Enter E-mail"
+              name="email"
+              value={this.state.email}
+              onChange={this.handleInputChange}
+              required
+            />
+          </div>
+
+          <div>
+            <FontAwesomeIcon icon="map-pin" className="map-pin" />
+            <input
+              type="text"
+              placeholder="Enter Zip Code"
+              name="zipCode"
+              value={this.state.zipCode}
+              onChange={this.handleInputChange}
+              required
+            />
+          </div>
+          <div>
+            <FontAwesomeIcon icon="credit-card" />
+            <input
+              type="text"
+              placeholder="Enter Credit Score"
+              name="creditScore"
+              value={this.state.creditScore}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <button className="sign-up-btn" type="submit">
+            <span>{this.state.loading ? "Loading" : "Sign Up"}</span>
           </button>
         </form>
-        <Link className="sign-up-btn" to="/signup">
-          Click Here To Sign Up
+        <Link className="log-in-btn" to="/login">
+          Click here to log in
         </Link>
-        <ul className="bg-bubbles">
-                    <li>Best Platform for lending!!</li>
-                    <li>Thank you so much Bevy! You're a lifesaver</li>
-                    <li>Thank you Bevy</li>
-                    <li>Bevy helped me start my buisness, I could never thank them enough <br />-anonymousdude</li>
-                    <li>Bevy is the go to for all my friends and family<br /> -Username</li>
-                    <li>Easy to use platform for everyone <br />-myuser34</li>
-                    <li>My favorite app <br /> -user10</li>
-                    <li>I love it! <br />-loveEverythin</li>
-                    <li>I ran out of ideas <br />-me</li>
-                </ul>
-      </StyledLoginComp>
+      </StyledSignUpComp>
     );
   }
 }
 
-export default LogIn;
+export default SignUpForm;

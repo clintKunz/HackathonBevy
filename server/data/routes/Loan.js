@@ -21,6 +21,24 @@ router
       .then(savedLoan => {
         res.status(200).json(savedLoan);
       }).catch(err => res.status(500).json({ message: err.message }))
+  })
+  .put('/', (req,res) => {
+    const changes = req.body;
+    const solicitedBy = req.session.userId;
+    const finalChanges = {...changes, solicitedBy}
+    Loan.findById(req.params)
+    .update(finalChanges)
+    .then(loan => {
+      console.log("THIS IS THE OBJECT",loan)
+      if(!loan){
+        res.status(200).json(loan)
+      }else{
+        res.status(500).send("json object returned empty")
+      }
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
   });
 
 module.exports = router;

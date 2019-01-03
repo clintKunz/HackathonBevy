@@ -7,7 +7,10 @@ import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
     max-width: 450px; 
-    margin: 0 auto;  
+    margin: 0 auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 `;
 
 class SolicitContainer extends Component {

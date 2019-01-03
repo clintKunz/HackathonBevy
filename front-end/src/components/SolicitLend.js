@@ -6,16 +6,23 @@ const SolicitDiv = styled.div`
     display: flex; 
     flex-direction: column; 
     align-items : center;
-    font-size:1.4rem;
+    font-size:1.45rem;
     color: white; 
     width : 66%;
-    height : 230px;
+    height : 275px;
     border: 2px solid green; 
-    -webkit-border-radius: 50%;
+    -webkit-border-radius: 100px;
     -webkit-border-top-left-radius: 0px;
-    border-radius: 100px;
+    border-radius: 100%;
     border-top-left-radius:0px;
     margin-bottom : 20px;
+    h3{
+        text-decoration:underline;
+        margin-top:10px;
+    }
+    h4{
+        margin:0% 5%;
+    }
 `;
 
 class SolicitLend extends Component {

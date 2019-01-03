@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../images/Logo.png";
+
 // import axios from "axios";
 import styled from "styled-components";
 
@@ -19,15 +20,12 @@ const StyledLoginComp = styled.div`
   color: #d1e7df;
   transform: translate(-50%, -50%);
   text-align: center;
-  background: #0e0e0e;
+  background: transparent;
+  z-index: 2;
   .logo {
     width: 50%;
-  }
-  h1 {
-    font-size: 5rem;
-    border-bottom: 2px solid #5abd9a;
-    margin-bottom: 3rem;
-    padding: 1.2rem 0;
+    border: 3px solid #5abd9a;
+    margin-bottom: 2rem;
   }
   form {
     display: flex;
@@ -56,6 +54,9 @@ const StyledLoginComp = styled.div`
     }
     input:focus {
       border-bottom: 2px solid #5abd9a;
+    }
+    input::placeholder {
+      color: #eee;
     }
 
     .log-in-btn {
@@ -122,71 +123,40 @@ class LogIn extends React.Component {
   };
   render() {
     return (
-      <>
-        <StyledLoginComp>
-          <img src={Logo} alt="logo" className="logo" />
-          <form onSubmit={this.handleSumbmit}>
-            <div>
-              <FontAwesomeIcon icon="envelope" />
-              <input
-                type="text"
-                placeholder="Enter Username"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-                autoComplete="off"
-                autoFocus
-              />
-            </div>
-            <div>
-              <FontAwesomeIcon icon="key" />
-              <input
-                type="password"
-                placeholder="Enter Password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-                autoComplete="off"
-              />
-            </div>
-            <button className="log-in-btn" type="submit">
-              <span>{this.state.loading ? "Loading" : "Log In"}</span>
-            </button>
-          </form>
-          <Link className="sign-up-btn" to="/signup">
-            Click Here To Sign Up
-          </Link>
-          <ul className="bg-bubbles">
-            <li>Best Platform for lending!!</li>
-            <li>Thank you so much Bevy! You're a lifesaver</li>
-            <li>Thank you Bevy</li>
-            <li>
-              Bevy helped me start my buisness, I could never thank them enough{" "}
-              <br />
-              -anonymousdude
-            </li>
-            <li>
-              Bevy is the go to for all my friends and family
-              <br /> -Username
-            </li>
-            <li>
-              Easy to use platform for everyone <br />
-              -myuser34
-            </li>
-            <li>
-              My favorite app <br /> -user10
-            </li>
-            <li>
-              I love it! <br />
-              -loveEverythin
-            </li>
-            <li>
-              I ran out of ideas <br />
-              -me
-            </li>
-          </ul>
-        </StyledLoginComp>
-      </>
+      <StyledLoginComp>
+        <img src={Logo} alt="logo" className="logo" />
+        <form onSubmit={this.handleSumbmit}>
+          <div>
+            <FontAwesomeIcon icon="envelope" />
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+              autoComplete="off"
+              autoFocus
+            />
+          </div>
+          <div>
+            <FontAwesomeIcon icon="key" />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+              autoComplete="off"
+            />
+          </div>
+          <button className="log-in-btn" type="submit">
+            <span>{this.state.loading ? "Loading" : "Log In"}</span>
+          </button>
+        </form>
+        <Link className="sign-up-btn" to="/signup">
+          Click Here To Sign Up
+        </Link>
+      </StyledLoginComp>
     );
   }
 }

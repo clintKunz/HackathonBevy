@@ -18,13 +18,13 @@ import LogIn from "./components/Login.js";
 import SolicitContainer from "./components/SoliticContainer";
 import SignUp from "./components/SignUp";
 import SolicitPage from "./components/SolicitPage";
-
+import Background from "./components/Background";
 library.add(faEnvelope, faKey, faUser, faMapPin, faCreditCard);
 const Container = styled.div`
+  position: relative;
   max-width: 500px;
   margin: 0 auto;
   height: 100vh;
-  border: 1px solid red;
   background: #0e0e0e;
 `;
 
@@ -45,6 +45,7 @@ class App extends React.Component {
           path="/solicit"
           render={props => <SolicitPage {...props} />}
         />
+        <Background />
       </Container>
     );
   }

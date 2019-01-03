@@ -6,7 +6,7 @@ import SolicitLend from './SolicitLend';
 
 const Wrapper = styled.div`
     max-width: 450px; 
-    margin: 0 auto; 
+    margin: 0 auto;  
 `;
 
 class SolicitContainer extends Component {

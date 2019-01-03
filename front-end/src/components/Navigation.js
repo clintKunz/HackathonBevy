@@ -7,19 +7,12 @@ const Nav = styled.nav`
   align-items: center;
   width: 100%;
   border-bottom: 1.5px solid black;
-<<<<<<< HEAD
-  padding-bottom: -30px;
-  margin-top: 15px;
-  padding-bottom: 5px;
-  color: white; 
-=======
   position: sticky;
   top: 0px;
   left: 0px;
   z-index: 2;
   background: #5abd9a;
   padding: 1rem 0;
->>>>>>> 0e6dccf235808eaedff5d17a38445f355830a30b
 `;
 
 const NavHeader = styled.p`
@@ -67,22 +60,10 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-<<<<<<< HEAD
-          <Elements onClick={this.filterDropDown}>
-            Filters
-            <FilterMenu className="hide">Loan Amount (Low to High)</FilterMenu>
-          </Elements>
-          <Elements>Public View</Elements>
-          <Elements>Search</Elements>
-          <Elements>
-            <NavLink to="/login">Sign In</NavLink>
-          </Elements>
-=======
           <Elements to="/filter">Filters</Elements>
           <Elements to="/public">Public View</Elements>
           <Elements to="/search">Search</Elements>
           <Elements to="/login">Sign In</Elements>
->>>>>>> 0e6dccf235808eaedff5d17a38445f355830a30b
         </ElementsContainer>
       </Nav>
     );

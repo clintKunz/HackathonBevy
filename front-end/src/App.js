@@ -69,7 +69,7 @@ class App extends React.Component {
           path="/solicit"
           render={props => <SolicitPage {...props} />}
         />
-        <Background />
+        {/* <Background /> */}
       </Container>
     );
   }

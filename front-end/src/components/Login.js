@@ -174,7 +174,7 @@ class LogIn extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.session.isLoggedIn,
+    isLoggedIn: !state.session.isLoggedIn,
   }
 }
 

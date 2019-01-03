@@ -4,11 +4,14 @@ import Logo from "../images/Logo.png";
 
 // import axios from "axios";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //custom css
 import "./landingPage.css";
+import actions from '../actions';
+const { login } = actions;
 
 const StyledLoginComp = styled.div`
   font-family: sans-serif;
@@ -104,11 +107,18 @@ class LogIn extends React.Component {
   constructor() {
     super();
     this.state = {
-      username: "",
+      email: "",
       password: "",
       loading: false
     };
   }
+
+  componentDidUpdate() {
+    if (this.props.isLoggedIn) {
+      this.props.history.push('/');
+    }
+  }
+
   handleInputChange = e => {
     e.preventDefault();
     this.setState({
@@ -117,8 +127,9 @@ class LogIn extends React.Component {
   };
   handleSumbmit = e => {
     e.preventDefault();
-    const { username, password } = this.state;
+    const { email, password } = this.state;
     console.log("submitting");
+    this.props.login(email, password);
     //axios calls here
   };
   render() {
@@ -130,9 +141,9 @@ class LogIn extends React.Component {
             <FontAwesomeIcon icon="envelope" />
             <input
               type="text"
-              placeholder="Enter Username"
-              name="username"
-              value={this.state.username}
+              placeholder="Enter email"
+              name="email"
+              value={this.state.email}
               onChange={this.handleInputChange}
               autoComplete="off"
               autoFocus
@@ -161,4 +172,10 @@ class LogIn extends React.Component {
   }
 }
 
-export default LogIn;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.session.isLoggedIn,
+  }
+}
+
+export default connect(mapStateToProps, {login})(LogIn);

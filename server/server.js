@@ -14,10 +14,8 @@ const LoanRouter = require('./data/routes/Loan');
 
 const server = express();
 
-const dbUrl = process.env.NODE_ENV === 'production'
-  // need new DB URL for project
-  ? ``
-  : 'mongodb://localhost:27017/ymmv';
+const dbUrl = process.env.DB_URL;
+const originUrls = process.env.PERMITTED_URLS.split(',');
 
 mongoose
   .connect(dbUrl)
@@ -26,11 +24,8 @@ mongoose
   })
   .catch(err => console.log('database conection failed', err));
 
-const originUrl = process.env.NODE_ENV === 'production'
-  ? 'https://ymmv-mern.herokuapp.com' : 'http://localhost:3000';
-
 const corsOptions = {
-  origin: (originUrl),
+  origin: (originUrls),
   credentials: true,
   methods: ['GET', 'PUT', 'POST', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],

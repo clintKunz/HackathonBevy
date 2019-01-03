@@ -24,6 +24,7 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
+
     "start": "nodemon -r dotenv/config app.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "mocha tests/*.test.js",

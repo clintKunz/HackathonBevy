@@ -5,7 +5,7 @@ const UserContract = require('../contracts/User');
 const UserSchema = new mongoose.Schema(UserContract);
 
 UserSchema.pre('save', function hashPassword(next) {
-  bcrypt.hash(this.password, 10, (err, hash) => {
+  bcrypt.hash(this.password, null, null, function(err, hash) {
     if (err) {
       return next(err);
     }

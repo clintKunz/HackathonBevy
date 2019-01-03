@@ -10,7 +10,7 @@ router
     if (password !== process.env.SUPER_SECRET_PASSWORD) return res.status(318).json({ message: 'You know what you did.'});
     const permittedFields = ['name'];
     if (permittedFields.indexOf(queryType) === -1) {
-      return res.status(422).json({ message: "Invalid query. User can only GET by 'name' or 'LoanName'."})
+      return res.status(422).json({ message: "Invalid query. User can only GET by 'lender' or 'borrower'."})
     }
     Loan
       .find({ [queryType]: new RegExp('.*'+string+'.*', "i") })

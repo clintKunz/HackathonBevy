@@ -14,8 +14,9 @@ const StyledSignUpComp = styled.div`
   color: #d1e7df;
   transform: translate(-50%, -50%);
   text-align: center;
-  background: #0e0e0e;
+  z-index: 2;
   .logo {
+    border: 2px solid #5abd9a;
     width: 50%;
   }
   h1 {
@@ -50,9 +51,11 @@ const StyledSignUpComp = styled.div`
       border-bottom: 2px solid #5abd9a;
     }
     input:focus {
-      border-bottom: 2px solid #5abd9a;
+      border-bottom: 2px solid #d1e7df;
     }
-
+    input::placeholder {
+      color: #eee;
+    }
     .sign-up-btn {
       margin: 2rem auto 3rem auto;
       padding: 0.5rem 0;
@@ -138,6 +141,7 @@ class SignUpForm extends React.Component {
               placeholder="Enter Username"
               value={this.state.username}
               onChange={this.handleInputChange}
+              autocomplete="off"
               required
             />
           </div>
@@ -149,6 +153,7 @@ class SignUpForm extends React.Component {
               placeholder="Enter Password"
               value={this.state.password}
               onChange={this.handleInputChange}
+              autocomplete="off"
               required
             />
           </div>
@@ -161,6 +166,7 @@ class SignUpForm extends React.Component {
               name="email"
               value={this.state.email}
               onChange={this.handleInputChange}
+              autocomplete="off"
               required
             />
           </div>
@@ -173,6 +179,7 @@ class SignUpForm extends React.Component {
               name="zipCode"
               value={this.state.zipCode}
               onChange={this.handleInputChange}
+              autocomplete="off"
               required
             />
           </div>
@@ -184,6 +191,7 @@ class SignUpForm extends React.Component {
               name="creditScore"
               value={this.state.creditScore}
               onChange={this.handleInputChange}
+              autocomplete="off"
             />
           </div>
           <button className="sign-up-btn" type="submit">

@@ -3,6 +3,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { connect } from 'react-redux';
 import {
   faEnvelope,
   faKey,

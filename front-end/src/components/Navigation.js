@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+<<<<<<< HEAD
 import { NavLink, Route } from "react-router-dom";
 import NavigationSolicitsMenu from "./NavigationSolicitsMenu";
 
+=======
+import { NavLink, Link } from "react-router-dom";
+import {connect} from 'react-redux';
+>>>>>>> master
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -55,20 +60,41 @@ class Navigation extends Component {
     console.log(e.target.ChildNode.innerHTML);
     //e.target.child.classList.toggle('hide');
   };
-  
+
   render() {
+    if (!this.props.isLoggedIn) return (
+      <Nav>
+        <NavHeader>
+          <Elements to="/login">Sign In</Elements>
+        </NavHeader>
+        <ElementsContainer>
+          <Elements to="/public">Public View</Elements>
+        </ElementsContainer>
+      </Nav>
+    )
     return (
       <Nav>
         <NavHeader>
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
+<<<<<<< HEAD
           <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
           <Elements to="/login">Sign In</Elements>
+=======
+          <Elements to="/filter">Filters</Elements>
+          <Elements to="/search">Search</Elements>
+>>>>>>> master
         </ElementsContainer>
       </Nav>
     );
   }
 }
 
-export default Navigation;
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.session.isLoggedIn,
+  }
+}
+
+export default connect(mapStateToProps)(Navigation);

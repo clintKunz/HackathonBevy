@@ -5,8 +5,16 @@ import { Link } from 'react-router-dom';
 const SolicitDiv = styled.div`
     display: flex; 
     flex-direction: column; 
-    border: 1px solid green; 
+    align-items : center;
+    font-size:1.4rem;
     color: white; 
+    width : 75%;
+    height : 200px;
+    border: 2px solid green; 
+    -webkit-border-radius: 100px;
+    -webkit-border-top-right-radius: 0;
+    border-radius: 100px;
+    border-top-right-radius: 0;
 `;
 
 class SolicitLend extends Component {

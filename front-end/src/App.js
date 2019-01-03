@@ -8,7 +8,9 @@ import {
   faKey,
   faUser,
   faMapPin,
-  faCreditCard
+  faCreditCard,
+  faDollarSign,
+  faCommentsDollar
 } from "@fortawesome/free-solid-svg-icons";
 
 //components
@@ -18,11 +20,19 @@ import LogIn from "./components/Login.js";
 import SolicitContainer from "./components/SoliticContainer";
 import SignUp from "./components/SignUp";
 import SolicitPage from "./components/SolicitPage";
-import CreateSolicitBorrow from './components/CreateSolicitBorrow';
-import CreateSolicitLend from './components/CreateSolicitLend';
+import CreateSolicitBorrow from "./components/CreateSolicitBorrow";
+import CreateSolicitLend from "./components/CreateSolicitLend";
 import Background from "./components/Background";
 
-library.add(faEnvelope, faKey, faUser, faMapPin, faCreditCard);
+library.add(
+  faEnvelope,
+  faKey,
+  faUser,
+  faMapPin,
+  faCreditCard,
+  faDollarSign,
+  faCommentsDollar
+);
 const Container = styled.div`
   position: relative;
   max-width: 500px;
@@ -43,8 +53,16 @@ class App extends React.Component {
         />
         <Route exact path="/login" render={props => <LogIn {...props} />} />
         <Route exact path="/signup" render={props => <SignUp {...props} />} />
-        <Route exact path="/create-borrow" render={props => <CreateSolicitBorrow {...props} />} />
-        <Route exact path="/create-lend" render={props => <CreateSolicitLend {...props} />} />
+        <Route
+          exact
+          path="/create-borrow"
+          render={props => <CreateSolicitBorrow {...props} />}
+        />
+        <Route
+          exact
+          path="/create-lend"
+          render={props => <CreateSolicitLend {...props} />}
+        />
         <Route
           exact
           path="/solicit"

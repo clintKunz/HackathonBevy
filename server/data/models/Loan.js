@@ -9,8 +9,8 @@ LoanSchema.pre('save', async function() {
     if (isSigned && !signedOn) signedOn = Date.now();
     const borrower = await User.findById(borrowerId);
     const lender = await User.findById(lenderId);
-    await borrower.update({ $push: { loans: this._id } });
-    await lender.update({ $push: { loans: this._id } });
+    await borrower.update({ $addToSet: { loans: this._id } });
+    await lender.update({ $addToSet: { loans: this._id } });
 })
 
 module.exports = mongoose.model('Loan', LoanSchema);

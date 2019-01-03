@@ -8,9 +8,9 @@ class NavigationSolicitsMenu extends Component {
     render() {
         return (
             <>
-            <Elements to="/filter">Filters</Elements>
-            <Elements to="/public">Public View</Elements>
-            <Elements to="/search">Search</Elements>
+            <Elements to="/solicits/filter">Filters</Elements>
+            <Elements to="/solicits/public">Public View</Elements>
+            <Elements to="/solicits/search">Search</Elements>
             </>
         );
     }

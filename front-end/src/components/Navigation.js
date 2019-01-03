@@ -63,7 +63,7 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-          <Route exact path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
+          <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
           <Elements to="/login">Sign In</Elements>
         </ElementsContainer>
       </Nav>

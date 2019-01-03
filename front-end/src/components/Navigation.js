@@ -10,6 +10,7 @@ const Nav = styled.nav`
   padding-bottom: -30px;
   margin-top: 15px;
   padding-bottom: 5px;
+  color: white; 
 `;
 
 const NavHeader = styled.p`
@@ -29,19 +30,35 @@ const Elements = styled.div`
   font-size: 1.5rem;
   font-family: ubuntu;
   text-decoration: none;
-  color: black;
+  color: grey;
   &:hover {
     color: grey;
   }
 `;
 
+const FilterMenu = styled.div`
+  .hide {
+    display: none; 
+  }
+`;
+
 class Navigation extends Component {
+  filterDropDown = (e) => {
+    console.log(e.target.ChildNode.innerHTML);
+    //e.target.child.classList.toggle('hide');
+  };
+  
   render() {
     return (
       <Nav>
-        <NavHeader>BEVY</NavHeader>
+        <NavHeader>
+          <NavLink to="/solicits">BEVY</NavLink>
+        </NavHeader>
         <ElementsContainer>
-          <Elements>Filters</Elements>
+          <Elements onClick={this.filterDropDown}>
+            Filters
+            <FilterMenu className="hide">Loan Amount (Low to High)</FilterMenu>
+          </Elements>
           <Elements>Public View</Elements>
           <Elements>Search</Elements>
           <Elements>

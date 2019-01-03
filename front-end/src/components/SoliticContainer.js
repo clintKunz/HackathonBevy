@@ -48,7 +48,7 @@ class SolicitContainer extends Component {
 
         axios.get("http://localhost:9000/api/solicits/lends")
         .then(res => {
-            console.log(res);
+            //console.log(res);
             this.setState({
                 solicitsLends: res.data
             })

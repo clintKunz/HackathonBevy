@@ -15,6 +15,7 @@ const StyledContainer = styled.div`
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
+
   .profilePic {
     border: 5px solid #d1e7df;
     border-radius: 50%;

@@ -9,10 +9,13 @@ import SearchBar from "./SearchBar";
 const Wrapper = styled.div`
   max-width: 450px;
   margin: 0 auto;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
+const StyledLink = styled(Link)``;
 
 class SolicitContainer extends Component {
   state = {
@@ -71,8 +74,8 @@ class SolicitContainer extends Component {
     return (
       <Wrapper>
         <SearchBar />
-        <Link to="/create-borrow">Need to Borrow Money?</Link>
-        <Link to="/create-lend">Willing to Lend Money?</Link>
+        <StyledLink to="/create-borrow">Need to Borrow Money?</StyledLink>
+        <StyledLink to="/create-lend">Willing to Lend Money?</StyledLink>
         {this.state.solicitsBorrows.map(borrow => (
           <SolicitBorrow key={borrow.id} {...props} solicitBorrow={borrow} />
         ))}

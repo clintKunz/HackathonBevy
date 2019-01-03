@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //custom css
 import "./landingPage.css";
-import actions from '../actions';
+import actions from "../actions";
 const { login } = actions;
 
 const StyledLoginComp = styled.div`
@@ -115,7 +115,7 @@ class LogIn extends React.Component {
 
   componentDidUpdate() {
     if (this.props.isLoggedIn) {
-      this.props.history.push('/');
+      this.props.history.push("/");
     }
   }
 
@@ -174,8 +174,11 @@ class LogIn extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: !state.session.isLoggedIn,
-  }
-}
+    isLoggedIn: state.session.isLoggedIn
+  };
+};
 
-export default connect(mapStateToProps, {login})(LogIn);
+export default connect(
+  mapStateToProps,
+  { login }
+)(LogIn);

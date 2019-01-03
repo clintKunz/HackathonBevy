@@ -5,7 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const StyledSignUpComp = styled.div`
   font-family: sans-serif;
-  width: 30rem;
+  font-size: 1.6rem;
+  width: 28rem;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -23,11 +24,14 @@ const StyledSignUpComp = styled.div`
     flex-direction: column;
     div {
       display: flex;
+      justify-content: space-between;
       width: 100%;
       font-size: 3rem;
       padding: 1rem 0;
       margin: 1rem 0;
-      border-bottom: 2px solid black;
+    }
+    .map-pin {
+      margin-left: 0.7rem;
     }
     input {
       outline: none;
@@ -36,14 +40,23 @@ const StyledSignUpComp = styled.div`
       background: none;
       font-size: 2rem;
       margin: 0 10px;
+      width: 80%;
+      border-bottom: 2px solid black;
     }
+    input:focus {
+      border-bottom: 2px solid green;
+    }
+
     .sign-up-btn {
       margin: 2rem auto 3rem auto;
+      padding: 0.5rem 0;
       background: none;
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
       border: 1px solid black;
+      outline: 0;
+      cursor: pointer;
       span {
         position: relative;
         z-index: 10;
@@ -148,7 +161,7 @@ class SignUpForm extends React.Component {
           </div>
 
           <div>
-            <FontAwesomeIcon icon="map-pin" />
+            <FontAwesomeIcon icon="map-pin" className="map-pin" />
             <input
               type="text"
               placeholder="Enter Zip Code"
@@ -169,7 +182,7 @@ class SignUpForm extends React.Component {
             />
           </div>
           <button className="sign-up-btn" type="submit">
-            {this.state.loading ? "Loading" : "Sign Up"}
+            <span>{this.state.loading ? "Loading" : "Sign Up"}</span>
           </button>
         </form>
         <Link className="log-in-btn" to="/login">

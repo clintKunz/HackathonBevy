@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
@@ -13,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 //components
+import Auth from "./components/Auth";
 import Navigation from "./components/Navigation";
 import LogIn from "./components/Login.js";
 import SolicitContainer from "./components/SoliticContainer";

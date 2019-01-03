@@ -5,9 +5,12 @@ import styled from "styled-components";
 
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//custom css
+import './landingPage.css';
 
 const StyledLoginComp = styled.div`
   font-family: sans-serif;
+  font-size: 1.6rem;
   width: 280px;
   position: absolute;
   top: 50%;
@@ -15,6 +18,7 @@ const StyledLoginComp = styled.div`
   color: black;
   transform: translate(-50%, -50%);
   text-align: center;
+  z-index:10;
   h1 {
     font-size: 36px;
     border-bottom: 2px solid black;
@@ -30,7 +34,6 @@ const StyledLoginComp = styled.div`
       font-size: 20px;
       padding: 10px 0;
       margin: 10px 0;
-      border-bottom: 2px solid black;
     }
     input {
       outline: none;
@@ -39,15 +42,21 @@ const StyledLoginComp = styled.div`
       background: none;
       font-size: 20px;
       margin: 0 10px;
+      border-bottom: 2px solid black;
+    }
+    input:focus {
+      border-bottom: 2px solid green;
     }
     .login-btn {
       margin: 20px auto 30px auto;
+      padding: 0.5rem 0;
       background: none;
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
       border: 1px solid black;
       cursor: pointer;
+      outline: 0;
       span {
         position: relative;
         z-index: 10;
@@ -137,6 +146,17 @@ class LogIn extends React.Component {
         <Link className="sign-up-btn" to="/signup">
           Click Here To Sign Up
         </Link>
+        <ul className="bg-bubbles">
+                    <li>Best Platform for lending!!</li>
+                    <li>Thank you so much Bevy! You're a lifesaver</li>
+                    <li>Thank you Bevy</li>
+                    <li>Bevy helped me start my buisness, I could never thank them enough <br />-anonymousdude</li>
+                    <li>Bevy is the go to for all my friends and family<br /> -Username</li>
+                    <li>Easy to use platform for everyone <br />-myuser34</li>
+                    <li>My favorite app <br /> -user10</li>
+                    <li>I love it! <br />-loveEverythin</li>
+                    <li>I ran out of ideas <br />-me</li>
+                </ul>
       </StyledLoginComp>
     );
   }

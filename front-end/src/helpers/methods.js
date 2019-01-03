@@ -22,3 +22,7 @@ export const createLoan = async (loan) => {
 export const updateLoan = async (loanId, changes) => {
     return put(`/loans/${loanId}`, changes)
 };
+
+export const getLoans = async() => {
+    return get('/loans');
+};

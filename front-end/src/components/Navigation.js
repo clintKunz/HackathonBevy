@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const Nav = styled.nav`
   display: flex;
@@ -24,7 +25,7 @@ const ElementsContainer = styled.div`
   align-items: center;
 `;
 
-const Elements = styled.a`
+const Elements = styled.div`
   font-size: 1.5rem;
   font-family: ubuntu;
   text-decoration: none;
@@ -40,10 +41,12 @@ class Navigation extends Component {
       <Nav>
         <NavHeader>BEVY</NavHeader>
         <ElementsContainer>
-          <Elements href="#">Filters</Elements>
-          <Elements href="#">Public View</Elements>
-          <Elements href="#">Search</Elements>
-          <Elements href="#">Sign In</Elements>
+          <Elements>Filters</Elements>
+          <Elements>Public View</Elements>
+          <Elements>Search</Elements>
+          <Elements>
+            <NavLink to="/login">Sign In</NavLink>
+          </Elements>
         </ElementsContainer>
       </Nav>
     );

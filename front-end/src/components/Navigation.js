@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { NavLink, Route } from "react-router-dom";
 import NavigationSolicitsMenu from "./NavigationSolicitsMenu";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 
 const Nav = styled.nav`
   display: flex;
@@ -36,7 +36,7 @@ export const Elements = styled(NavLink)`
   font-family: ubuntu, sans-serif;
   text-decoration: none;
   color: black;
-  margin-right: 15px; 
+  margin-right: 15px;
   &:hover {
     color: grey;
   }
@@ -47,34 +47,35 @@ export const Elements = styled(NavLink)`
 
 const FilterMenu = styled.div`
   .hide {
-    display: none; 
+    display: none;
   }
 `;
 
 class Navigation extends Component {
-  filterDropDown = (e) => {
+  filterDropDown = e => {
     console.log(e.target.ChildNode.innerHTML);
     //e.target.child.classList.toggle('hide');
   };
 
   render() {
-    if (!this.props.isLoggedIn) return (
-      <Nav>
-        <NavHeader>
-          <Elements to="/login">Sign In</Elements>
-        </NavHeader>
-        <ElementsContainer>
-          <Elements to="/solicits">Public View</Elements>
-        </ElementsContainer>
-      </Nav>
-    )
+    if (!this.props.isLoggedIn)
+      return (
+        <Nav>
+          <NavHeader>
+            <Elements to="/login">Sign In</Elements>
+          </NavHeader>
+          <ElementsContainer>
+            <Elements to="/solicits">Public View</Elements>
+          </ElementsContainer>
+        </Nav>
+      );
     return (
       <Nav>
         <NavHeader>
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-          <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
+          <NavigationSolicitsMenu />
           <Elements to="/login">Log Out</Elements>
         </ElementsContainer>
       </Nav>
@@ -84,8 +85,8 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.session.isLoggedIn,
-  }
-}
+    isLoggedIn: true //state.session.isLoggedIn,
+  };
+};
 
 export default connect(mapStateToProps)(Navigation);

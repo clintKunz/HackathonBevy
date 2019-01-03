@@ -11,7 +11,7 @@ const session = (state = defaultState, action) => {
     case (login.progress): //'loginProgress'
       return {
         ...state,
-        isLoggedIn: false,
+        isLoggedIn: true,
         inProgress: true,
       }
     case (login.success): //'loginSuccess'

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Solicit from './Solicit';
+import SolicitBorrow from './SolicitBorrow';
+import SolicitLend from './SolicitLend';
 
 const Wrapper = styled.div`
     max-width: 450px; 
@@ -39,7 +40,7 @@ class SolicitContainer extends Component {
     componentDidMount() {
         axios.get("http://localhost:9000/api/solicits/borrows")
             .then(res => {
-                console.log(res);
+                //console.log(res);
                 this.setState({
                     solicitsBorrows: res.data
                 })
@@ -48,6 +49,7 @@ class SolicitContainer extends Component {
 
         axios.get("http://localhost:9000/api/solicits/lends")
         .then(res => {
+            console.log(res);
             this.setState({
                 solicitsLends: res.data
             })
@@ -58,7 +60,8 @@ class SolicitContainer extends Component {
     render(props) {
         return (
             <Wrapper>
-                {this.state.solicitsBorrows.map(borrows => <Solicit key={borrows.id} {...props} solicitBorrow={borrows} />)}
+                {this.state.solicitsBorrows.map(borrow => <SolicitBorrow key={borrow.id} {...props} solicitBorrow={borrow} />)}
+                {this.state.solicitLends.map(lend => <SolicitLend key={lend.id} {...props} solicitLend={lend} />)}
             </Wrapper>
         );
     }

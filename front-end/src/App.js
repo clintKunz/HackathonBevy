@@ -3,6 +3,7 @@ import "./App.css";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
 import { library } from "@fortawesome/fontawesome-svg-core";
+import { connect } from 'react-redux';
 import {
   faEnvelope,
   faKey,
@@ -21,7 +22,6 @@ import SolicitPage from "./components/SolicitPage";
 import CreateSolicitBorrow from './components/CreateSolicitBorrow';
 import CreateSolicitLend from './components/CreateSolicitLend';
 import Background from "./components/Background";
-import { login, createLoan } from './helpers/api';
 
 library.add(faEnvelope, faKey, faUser, faMapPin, faCreditCard);
 const Container = styled.div`
@@ -57,4 +57,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  isLoggedIn: state.session.isLoggedIn,
+});
+
+export default connect(mapStateToProps)(App);

@@ -55,6 +55,8 @@ const StyledSignUpComp = styled.div`
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
       border: 1px solid black;
+      outline: 0;
+      cursor: pointer;
       span {
         position: relative;
         z-index: 10;

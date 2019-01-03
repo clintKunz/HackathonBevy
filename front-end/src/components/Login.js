@@ -31,7 +31,6 @@ const StyledLoginComp = styled.div`
       font-size: 20px;
       padding: 10px 0;
       margin: 10px 0;
-      border-bottom: 2px solid black;
     }
     input {
       outline: none;
@@ -40,15 +39,21 @@ const StyledLoginComp = styled.div`
       background: none;
       font-size: 20px;
       margin: 0 10px;
+      border-bottom: 2px solid black;
+    }
+    input:focus {
+      border-bottom: 2px solid green;
     }
     .login-btn {
       margin: 20px auto 30px auto;
+      padding: 0.5rem 0;
       background: none;
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
       position: relative;
       border: 1px solid black;
       cursor: pointer;
+      outline: 0;
       span {
         position: relative;
         z-index: 10;

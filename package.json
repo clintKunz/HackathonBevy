@@ -4,7 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "bcrypt-nodejs": "0.0.3",
     "bcrypt": "^3.0.0",
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",

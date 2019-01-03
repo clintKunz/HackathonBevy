@@ -57,8 +57,4 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isLoggedIn: state.session.isLoggedIn,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

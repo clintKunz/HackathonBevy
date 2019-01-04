@@ -1,5 +1,5 @@
 import actionTypes from '../actions/actionTypes';
-const { login, register } = actionTypes;
+const { login, register, getMyLoans } = actionTypes;
 
 const defaultState = {
   profile: {}
@@ -11,6 +11,14 @@ const session = (state = defaultState, action) => {
       return {
         ...state,
         profile: action.response.user,
+      }
+    case (getMyLoans.success):
+      return {
+        ...state,
+        profile: {
+          ...state.profile,
+          loans: action.response.loans,
+        }
       }
     default:
       return state

@@ -29,10 +29,8 @@ router
   })
   .get('/mine', passport.authenticate('bearer'), async (req, res) => {
     // grab user and return loans that belong to them
-    const { _id: userId } = req.user;
-    const user = await User.findById(userId);
-    if (!user._id) return res.status(404).json({ message: 'User not found.'})
-    res.status(200).json({ loans: user.loans });
+    const loans = await Loan.find({ _id: req.user.loans });
+    res.status(200).json({ loans });
   })
   .post('/', passport.authenticate('bearer'), (req, res) => {
     // grab details and make new loan

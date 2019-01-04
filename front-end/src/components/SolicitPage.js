@@ -7,17 +7,23 @@ import actions from '../actions';
 const { getLoanById } = actions;
 
 const SolicitContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  line-height: 5.5rem;
   font-family: ubuntu;
-  margin-left: 18px;
+  color: white; 
+  font-size: 1.9rem; 
+  margin: 15px;
+  span {
+    color: green;
+    font-weight: bold; 
+  }
+  h2, h3 {
+    margin: 10px 0; 
+  }
+  p {
+    margin: 0 10px; 
+  }
 `;
 
-const SolicitItems = styled.tr`
-  font-size: 1.6rem;
-  color: white; 
-`;
+
 class SolicitPage extends React.Component {
   state = {
     solicit: {}
@@ -35,28 +41,16 @@ class SolicitPage extends React.Component {
 
   render() {
     console.log("PROPS::::::::::" , this.props)
+
     return (
-      <div style={{color: "white"}}>
+      <SolicitContainer>
           <h2>{(this.state.solicit.solicitType === 'borrower') ? 'In search of a qualified lender to agree to or counter the following terms:' : 'In search of a qualified borrower to agree to the following terms:'} </h2>
           <p>I, <span>"username"</span>, hereby solicit a <span>{this.state.solicit.loanType}</span> loan in the amount of <span>${this.state.solicit.amount}</span>. With the following terms,</p>
-          <p>The loan will be funded by the lender no later than two weeks after both parties have signed the contract. Payback for the loan will then commence the day the contract is executed or <span>{moment(this.state.solicit.startDate).format('MMM-DD-YYYY')}, whichever is later.</span></p> 
-      </div>
-
-      // <SolicitContainer>
-      //   <table>
-      //     <tbody>
-      //       <SolicitItems><th>Loan ID: {this.state.solicit._id}</th></SolicitItems>
-      //       <SolicitItems><th>User ID: {this.state.solicit.borrower}</th></SolicitItems>
-      //       <SolicitItems><th>Loan Amount: {this.state.solicit.amount}</th></SolicitItems>
-      //       <SolicitItems><th>Length in Months: {this.state.solicit.lengthMonths} months</th></SolicitItems>
-      //       <SolicitItems><th>Type: {this.state.solicit.loanType}</th></SolicitItems>
-      //       <SolicitItems><th>APR: {this.state.solicit.interest}%</th></SolicitItems>
-      //       <SolicitItems><th>Start Payback Date: {moment(this.state.solicit.startDate).format('MMM-DD-YYYY')}</th></SolicitItems>
-      //       <SolicitItems><th>Pitch: {this.state.solicit.pitch}</th></SolicitItems>
-      //       <SolicitItems><th>Comments: {this.state.Comment}</th></SolicitItems>
-      //     </tbody>
-      //   </table>
-      // </SolicitContainer>
+          <p>The loan will be funded by the lender no later than two weeks after both parties have signed the contract. Payback for the loan will then commence on the day the contract is executed or <span>{moment(this.state.solicit.startDate).format('MMM-DD-YYYY')}, whichever is later.</span> Payments will be made monthly for the entire length of the loan, which is <span>{this.state.solicit.lengthMonths}</span> months. Monthly payments will be $<span>{Math.round((this.state.solicit.amount/this.state.solicit.lengthMonths)*(1 + this.state.solicit.interest/100/12))}</span></p>
+          <h3>Reason why I need the loan:</h3>
+          <p><span>{this.state.solicit.pitch}.</span></p>
+          <p>If you are interested in fulfilling this loan, contact me at <span>example@hotmail.com</span>. Thank you!</p>        
+      </SolicitContainer>
     );
   }
 }

@@ -22,11 +22,11 @@ router
         res.status(200).json(savedLoan);
       }).catch(err => res.status(500).json({ message: err.message }))
   })
-  .put('/', (req,res) => {
+  .put('/:loanId', (req,res) => {
     const changes = req.body;
     const solicitedBy = req.session.userId;
     const finalChanges = {...changes, solicitedBy}
-    Loan.findById(req.params)
+    Loan.findById(req.params.loanId)
     .update(finalChanges)
     .then(loan => {
       console.log("THIS IS THE OBJECT",loan)

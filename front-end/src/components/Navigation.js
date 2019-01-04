@@ -78,13 +78,8 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-<<<<<<< HEAD
-          <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
-          <Elements to="/login">Sign In</Elements>
-=======
           <Elements to="/filter">Filters</Elements>
           <Elements to="/search">Search</Elements>
->>>>>>> master
         </ElementsContainer>
       </Nav>
     );

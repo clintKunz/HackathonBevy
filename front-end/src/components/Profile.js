@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import profilePic from "../images/profile-pic.jpg";
+import moment from 'moment';
 import actions from '../actions';
-const { getProfile } = actions;
+const { getMyLoans } = actions;
 
 const StyledContainer = styled.div`
   border: 1px solid #d1e7df;
@@ -31,30 +32,46 @@ const StyledContainer = styled.div`
 const StyledDescription = styled.h2`
   margin: 1rem 0;
 `;
-const Profile = props => {
-  console.log(props);
-  const { user } = props;
-  return (
-    <StyledContainer>
-      <img src={props.img} alt="profile-pic" className="profilePic" />
-      <StyledDescription>
-        <label htmlFor="">name</label>
-        <p>{user.username}</p>
-      </StyledDescription>
-      <StyledDescription>
-        <label htmlFor="">credit score</label>
-        <p>{user.creditScore}</p>
-      </StyledDescription>
-      <StyledDescription>
-        <label htmlFor="">email</label>
-        <p>{user.email}</p>
-      </StyledDescription>
-      <StyledDescription>
-        <label htmlFor="">created on</label>
-        <p>{user.createdOn}</p>
-      </StyledDescription>
-    </StyledContainer>
-  );
+
+class Profile extends React.Component {
+
+  componentDidMount() {
+    console.log('hi')
+    this.props.getMyLoans();
+  }
+
+  render() {
+    const { user } = this.props;    
+    return (
+      <>
+        <StyledContainer>
+          <img src={!user.img ? profilePic : user.img} alt="profile-pic" className="profilePic" />
+          <StyledDescription>
+            <label htmlFor="">name</label>
+            <p>{user.username}</p>
+          </StyledDescription>
+          <StyledDescription>
+            <label htmlFor="">credit score</label>
+            <p>{user.creditScore}</p>
+          </StyledDescription>
+          <StyledDescription>
+            <label htmlFor="">email</label>
+            <p>{user.email}</p>
+          </StyledDescription>
+          <StyledDescription>
+            <label htmlFor="">created on</label>
+            <p>{moment(user.signUpDate).format('MMM-DD-YYYY')}</p>
+          </StyledDescription>
+        </StyledContainer>
+        <StyledContainer>
+          <StyledDescription>
+            <label htmlFor="">my loans</label>
+            <p></p>
+          </StyledDescription>
+        </StyledContainer>  
+      </>
+    );
+  }
 };
 
 const mapStateToProps = state => {
@@ -65,5 +82,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  null
+  {getMyLoans}
 )(Profile);

@@ -9,7 +9,10 @@ Object.keys(apiMethods).forEach(methodName => {
   actions[methodName] = (...args) => dispatch => {
     dispatch({ type: actionTypes[methodName].progress })
     apiMethods[methodName](...args)
-      .then(response => dispatch({ type: actionTypes[methodName].success, response }))
+      .then(response => {
+        if (response.data.token) localStorage.setItem('token', response.data.token);
+        dispatch({ type: actionTypes[methodName].success, response: response.data });
+      })
       .catch(error => {
         let errorMessage;
         if (error.response) {
@@ -31,6 +34,7 @@ Object.keys(apiMethods).forEach(methodName => {
 });
 
 actions.logout = dispatch => () => {
+  localStorage.clear();
   dispatch({ type: actionTypes.logout });
 }
 

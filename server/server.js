@@ -4,13 +4,13 @@ const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const passport = require('passport');
-const session = require('express-session');
 const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')(session);
 
 // local files
 const UserRouter = require('./data/routes/User');
 const LoanRouter = require('./data/routes/Loan');
+const strategies = require('./data/strategies');
+strategies();
 
 const server = express();
 
@@ -31,15 +31,6 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
-server.use(session({
-  store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  secret: process.env.SECRET,
-  resave: false,
-  saveUninitialized: true,
-  httpOnly: true,
-  secure: true,
-  sameSite: 'strict',
-}));
 server.use(morgan());
 server.use(express.json());
 server.use(cors(corsOptions));

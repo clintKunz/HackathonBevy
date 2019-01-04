@@ -55,7 +55,7 @@ class SolicitContainer extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:9000/api/solicits/borrows")
+      .get("http://localhost:5000/api/solicits/borrows")
       .then(res => {
         //console.log(res);
         this.setState({
@@ -65,7 +65,7 @@ class SolicitContainer extends Component {
       .catch(err => console.log(err));
 
     axios
-      .get("http://localhost:9000/api/solicits/lends")
+      .get("http://localhost:5000/api/solicits/lends")
       .then(res => {
         //console.log(res);
         this.setState({

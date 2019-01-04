@@ -1,21 +1,53 @@
 const express = require('express');
 const Loan = require('../models/Loan');
 const User = require('../models/User');
+const passport = require('passport');
+
+passport.serializeUser(function (user, done) {
+  done(null, user._id);
+});
+
+passport.deserializeUser(function (user, done) {
+  User.findById(id, function (err, user) {
+      done(err, user);
+  });
+});
 
 const router = express.Router();
 
 router
   .get('/', async (req, res) => {
     // grab user and return loans that belong to them
-    const { userId } = req.session;
+    const { _id: userId } = req.user;
     const user = await User.findById(userId);
     if (!user._id) return res.status(404).json({ message: 'User not found.'})
     res.status(200).json({ loans: user.loans });
   })
-  .post('/', (req, res) => {
+  .get('/lends', (req, res) => {
+    Loan.find({solicitType: 'borrower'})
+      .then(loans => {
+        res.status(200).json({loans})
+      }).catch(err => {
+        res.status(500).json({ message: err.message })
+      })  })
+  .get('/borrows', (req, res) => {
+    Loan.find({solicitType: 'lender'})
+      .then(loans => {
+        res.status(200).json({loans})
+      }).catch(err => {
+        res.status(500).json({ message: err.message })
+      })
+  })
+  .get('/mine', passport.authenticate('bearer'), (req, res) => {
+    User.findById(req.user._id)
+      .then(user => {
+        res.status(200).json({ loans: user.loans });
+      }).catch(err => res.status(500).json({ message: err.message }))
+  })
+  .post('/', passport.authenticate('bearer'), (req, res) => {
     // grab details and make new loan
     const { ...details } = req.body;
-    const solicitedBy = req.session.userId;
+    const solicitedBy = req.user._id;
     const newLoan = new Loan({...details, solicitedBy});
     newLoan.save()
       .then(savedLoan => {
@@ -24,7 +56,7 @@ router
   })
   .put('/:loanId', (req,res) => {
     const changes = req.body;
-    const solicitedBy = req.session.userId;
+    const solicitedBy = req.user._id;
     const finalChanges = {...changes, solicitedBy}
     Loan.findById(req.params.loanId)
     .update(finalChanges)

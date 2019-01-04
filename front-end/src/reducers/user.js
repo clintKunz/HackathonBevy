@@ -1,17 +1,16 @@
 import actionTypes from '../actions/actionTypes';
-const { login } = actionTypes;
+const { login, register } = actionTypes;
 
 const defaultState = {
-  inProgress: false,
-  isLoggedIn: false,
+  profile: {}
 };
 
 const session = (state = defaultState, action) => {
   switch (action.type) {
-    case (login.success): //'loginProgress'
+    case (login.success || register.success): //'loginProgress'
       return {
         ...state,
-        profile: action.response,
+        profile: action.response.user,
       }
     default:
       return state

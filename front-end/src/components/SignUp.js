@@ -124,8 +124,9 @@ class SignUpForm extends React.Component {
         loading: !this.state.loading
       },
       () => {
-        const { username, password } = this.state;
+        const newUser = this.state;
         console.log("loading!!");
+        this.props.register(newUser);
       }
     );
   };

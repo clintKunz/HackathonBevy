@@ -37,7 +37,7 @@ class SolicitContainer extends Component {
         <StyledLink to="/create-borrow">Need to Borrow Money?</StyledLink>
         <StyledLink to="/create-lend">Willing to Lend Money?</StyledLink>
         {this.props.searchResults.map(solicit => (
-          <SolicitBorrow key={solicit.id} solicit={solicit} {...props}/>
+          <SolicitBorrow key={solicit._id} solicit={solicit} {...props}/>
         ))}
       </Wrapper>
     );

@@ -38,9 +38,10 @@ router
     // grab details and make new loan
     const { ...details } = req.body;
     const solicitedBy = req.user._id;
-    const newLoan = new Loan({...details, solicitedBy});
+    if (!solicitedBy) return res.status(401).json({ message: 'Only logged in people can post solicits.'});    const newLoan = new Loan({...details, solicitedBy});
     newLoan.save()
       .then(savedLoan => {
+        console.log(savedLoan);
         res.status(200).json(savedLoan);
       }).catch(err => res.status(500).json({ message: err.message }))
   })

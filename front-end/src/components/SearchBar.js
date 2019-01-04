@@ -29,23 +29,29 @@ const Radio = styled.button`
 class SearchBar extends Component {
   state = {
     type: 'borrower',
+    queryString: '',
   }
   
   handleChange = (e) => {
-    this.props.searchLoans(this.state.type, e.target.value);
+    const { value } = e.target;
+    this.props.searchLoans(this.state.type, value);
+    this.setState({
+      queryString: value,
+    })
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.props.searchLoans(this.state.type, ''), 300);
+    this.props.searchLoans(this.state.type, '')
+    this.interval = setInterval(() => this.props.searchLoans(this.state.type, this.state.queryString), 10000);
   }
 
   componentWillUnmount() {
     clearInterval(this.interval);
   }
   
-  setType(string) {
+  setType(type) {
     this.setState({
-      type: string
+      type,
     });
   }
 

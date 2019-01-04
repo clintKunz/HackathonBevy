@@ -36,4 +36,8 @@ export const searchLoans = async(type, string) => {
 
 export const getMyLoans = async() => {
     return get('/loans/mine', config());
-}
+};
+
+export const getLoanById = async(id) => {
+    return get('/loanId', id, config());
+};

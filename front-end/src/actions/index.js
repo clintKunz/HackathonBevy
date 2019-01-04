@@ -1,9 +1,7 @@
 import * as apiMethods from '../helpers/methods';
 import actionTypes from './actionTypes';
 
-let actions = {
-  //syncronous actions go here as string properties,
-};
+let actions = {};
 
 Object.keys(apiMethods).forEach(methodName => {
   actions[methodName] = (...args) => dispatch => {

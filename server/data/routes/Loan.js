@@ -16,7 +16,7 @@ passport.deserializeUser(function (user, done) {
 const router = express.Router();
 
 router
-  .get('/', async (req, res) => {
+  .get('/', passport.authenticate('Bearer'), async (req, res) => {
     // grab user and return loans that belong to them
     const { _id: userId } = req.user;
     const user = await User.findById(userId);
@@ -24,20 +24,14 @@ router
     res.status(200).json({ loans: user.loans });
   })
   .get('/lends', (req, res) => {
-    Loan.find({solicitType: 'borrower'})
+    const { type, string } = req.query;
+    Loan.find({solicitType: type, description: {$regex: string}})
       .then(loans => {
         res.status(200).json({loans})
       }).catch(err => {
         res.status(500).json({ message: err.message })
-      })  })
-  .get('/borrows', (req, res) => {
-    Loan.find({solicitType: 'lender'})
-      .then(loans => {
-        res.status(200).json({loans})
-      }).catch(err => {
-        res.status(500).json({ message: err.message })
-      })
-  })
+      });
+    })
   .get('/mine', passport.authenticate('bearer'), (req, res) => {
     User.findById(req.user._id)
       .then(user => {

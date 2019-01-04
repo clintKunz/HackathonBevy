@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import profilePic from "../images/profile-pic.jpg";
+import actions from '../actions';
+const { getProfile } = actions;
 
 const StyledContainer = styled.div`
   border: 1px solid #d1e7df;
@@ -31,24 +33,25 @@ const StyledDescription = styled.h2`
 `;
 const Profile = props => {
   console.log(props);
+  const { user } = props;
   return (
     <StyledContainer>
       <img src={props.img} alt="profile-pic" className="profilePic" />
       <StyledDescription>
         <label htmlFor="">name</label>
-        <p>{props.username}</p>
+        <p>{user.username}</p>
       </StyledDescription>
       <StyledDescription>
         <label htmlFor="">credit score</label>
-        <p>{props.creditScore}</p>
+        <p>{user.creditScore}</p>
       </StyledDescription>
       <StyledDescription>
         <label htmlFor="">email</label>
-        <p>{props.email}</p>
+        <p>{user.email}</p>
       </StyledDescription>
       <StyledDescription>
         <label htmlFor="">created on</label>
-        <p>{props.createdOn}</p>
+        <p>{user.createdOn}</p>
       </StyledDescription>
     </StyledContainer>
   );
@@ -56,12 +59,7 @@ const Profile = props => {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: state.session.isLoggedIn,
-    username: "ben",
-    creditScore: 999,
-    createdOn: "2000-11-11",
-    img: profilePic,
-    email: "123@hotmail.com"
+    user: state.user.profile,
   };
 };
 

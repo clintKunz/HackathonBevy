@@ -1,18 +1,10 @@
 const express = require('express');
 const passport = require('passport');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 const router = express.Router();
-
-passport.serializeUser(function (user, done) {
-  done(null, user._id);
-});
-
-passport.deserializeUser(function (user, done) {
-  User.findById(id, function (err, user) {
-      done(err, user);
-  });
-});
+const secret = process.env.SECRET;
 
 router
   .post('/register', (req, res) => {
@@ -20,9 +12,13 @@ router
     const newUser = new User({ ...details });
     newUser
       .save()
-      .then((user) => {
-        req.session.userId = user._id;
-        res.status(200).json({ user });
+      .then(user => {
+        const payload = {
+          sub: user._id,
+          exp: Date.now() + (1000 * 60 * 5),
+        };
+        const token = jwt.sign(payload, secret);
+        res.status(200).json({ user, token });
       })
       .catch((err) => {
         res.status(500).json({ message: err.message });
@@ -38,37 +34,39 @@ router
         user
           .validify(password)
           .then((passwordIsValid) => {
-            console.log(passwordIsValid)
             if (!passwordIsValid) {
               return res.status(401).json({ message: 'Bad credentials.' });
             }
-
-            req.session.userId = user._id;
-            res.status(200).json(user);
-          }).catch(err => res.status(500).json({ message: err.message || 'Failed to log in.'}));
+            const payload = {
+              sub: user._id,
+              exp: Date.now() + (1000 * 60 * 5),
+            };
+            const token = jwt.sign(payload, secret);
+            console.log(payload);
+            res.status(200).json({ user, token });
+          }).catch(err => res.status(500).json({ message: err.message || 'Failed to log in.' }));
       }).catch(err => {
-        console.log(err);
         res.status(500).json({ message: err.message || 'Failed to find user.' })
 
       });
   })
-  .get('/profile', (req, res) => {
-    const { userId } = req.session;
+  .get('/profile', passport.authenticate('Bearer'), (req, res) => {
+    const { _id: userId } = req.user;
     User
       .findById(userId)
-      .populate('sensitivityIds')
+      .populate('loans')
       .then(user => {
         if (!user) {
           res.status(401).json({ message: "Unauthorized." });
         }
-        res.status(200).json(user);
+        res.status(200).json({ user });
       }).catch(err => {
-        res.status(500).json(err);
+        res.status(500).json({ message: err.message });
       })
   })
   .get('/', (req, res) => {
     res.status(200).json({ message: "At least this part is working!" })
   })
-  
+
 
 module.exports = router;

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 import NavigationSolicitsMenu from "./NavigationSolicitsMenu";
 import { connect } from "react-redux";
+import actions from '../actions';
+const {logout} = actions;
 
-import { NavLink, Link } from "react-router-dom";
-import {connect} from 'react-redux';
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -76,12 +77,13 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-          <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
           <Elements to="/login">Sign In</Elements>
           <Elements to="/filter">Filters</Elements>
           <Elements to="/search">Search</Elements>
           <NavigationSolicitsMenu />
-          <Elements to="/login">Log Out</Elements>
+          <Elements to="/login" onClick={() => this.props.logout()}>Log Out</Elements>
+          <Elements to="/filter">Filters</Elements>
+          <Elements to="/search">Search</Elements>
         </ElementsContainer>
       </Nav>
     );
@@ -90,8 +92,8 @@ class Navigation extends Component {
 
 const mapStateToProps = state => {
   return {
-    isLoggedIn: true //state.session.isLoggedIn,
+    isLoggedIn: state.session.isLoggedIn,
   };
 };
 
-export default connect(mapStateToProps)(Navigation);
+export default connect(mapStateToProps, { logout })(Navigation);

@@ -12,6 +12,7 @@ const StyledContainer = styled.div`
   }
 `;
 const StyledInput = styled.input`
+  outline: 0;
   border-radius: 2rem;
   padding: 0 1rem;
 `;

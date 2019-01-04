@@ -28,7 +28,8 @@ import CreateSolicitBorrow from "./components/CreateSolicitBorrow";
 import CreateSolicitLend from "./components/CreateSolicitLend";
 import Background from "./components/Background";
 import Profile from "./components/Profile";
-const {refreshToken} = actions;
+import { login } from "./helpers/methods";
+const { refreshToken } = actions;
 
 library.add(
   faEnvelope,
@@ -49,10 +50,17 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
-  // make and break refresh token flow
+  componentDidMount() {
+    // check for token and log in automatically if present
+    const token = localStorage.getItem('token');
+    if (token && !this.props.isLoggedIn) {
+      this.props.refreshToken();
+    }
+  }
   componentDidUpdate(prevProps) {
+    // set refresh token interval
     if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
-      this.refreshToken = setInterval(() => this.props.refreshToken(), 10000);
+      this.refreshToken = setInterval(() => this.props.refreshToken(), 1000 * 60 * 1);
     } else if (prevProps.isLoggedIn && !this.props.isLoggedIn) {
       clearInterval(this.refreshToken)
     }
@@ -84,8 +92,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state =>  ({
+const mapStateToProps = state => ({
   isLoggedIn: state.session.isLoggedIn,
 })
 
-export default withRouter(connect(mapStateToProps, {refreshToken})(App));
+export default withRouter(connect(mapStateToProps, { refreshToken })(App));

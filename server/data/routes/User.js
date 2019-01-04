@@ -15,7 +15,7 @@ router
       .then(user => {
         const payload = {
           sub: user._id,
-          exp: Date.now() + (1000 * 60 * 5),
+          exp: Date.now() + (1000 * 60 * 2),
         };
         const token = jwt.sign(payload, secret);
         res.status(200).json({ user, token });
@@ -39,7 +39,7 @@ router
             }
             const payload = {
               sub: user._id,
-              exp: Date.now() + (1000 * 60 * 5),
+              exp: Date.now() + (1000 * 60 * 2),
             };
             const token = jwt.sign(payload, secret);
             res.status(200).json({ user, token });
@@ -52,7 +52,7 @@ router
   .get('/refreshToken', passport.authenticate('bearer'), (req, res) => {
     const payload = {
       sub: req.user._id,
-      exp: Date.now() + (1000 * 60 * 5),
+      exp: Date.now() + (1000 * 60 * 2),
     };
     const token = jwt.sign(payload, secret);
     res.status(200).json({ token });

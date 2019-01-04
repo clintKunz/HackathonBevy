@@ -1,4 +1,5 @@
 import actionTypes from '../actions/actionTypes';
+import { refreshToken } from '../helpers/methods';
 const { login, register, logout } = actionTypes;
 
 const defaultState = {
@@ -50,6 +51,11 @@ const session = (state = defaultState, action) => {
       return {
         ...state,
         isLoggedIn: false,
+      }
+    case (refreshToken.success):
+      return {
+        ...state,
+        isLoggedIn: true,
       }
     default:
       return state

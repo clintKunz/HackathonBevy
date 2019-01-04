@@ -38,6 +38,10 @@ export const getMyLoans = async() => {
     return get('/loans/mine', config());
 };
 
-export const getLoanById = async(id) => {
-    return get('/loanId', id, config());
+export const getLoanById = async(loanId) => {
+    return get(`/loans/${loanId}`, config());
 };
+
+export const refreshToken = async() => {
+    return get('/users/refreshToken', config());
+}

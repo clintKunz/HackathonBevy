@@ -49,6 +49,14 @@ router
 
       });
   })
+  .get('/refreshToken', passport.authenticate('bearer'), (req, res) => {
+    const payload = {
+      sub: req.user._id,
+      exp: Date.now() + (1000 * 60 * 5),
+    };
+    const token = jwt.sign(payload, secret);
+    res.status(200).json({ token });
+  })
   .get('/profile', passport.authenticate('bearer'), (req, res) => {
     const { _id: userId } = req.user;
     User

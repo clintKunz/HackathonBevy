@@ -45,33 +45,24 @@ router
         res.status(200).json(savedLoan);
       }).catch(err => res.status(500).json({ message: err.message }))
   })
-  .put('/:loanId', passport.authenticate('bearer'), (req,res) => {
+  .put('/:loanId', passport.authenticate('bearer'), async (req, res) => {
     const changes = req.body;
     const solicitedBy = req.user._id;
-    const finalChanges = {...changes, solicitedBy}
-    Loan.findById(req.params.loanId)
-    .update(finalChanges)
-    .then(loan => {
-      console.log("THIS IS THE OBJECT",loan)
-      if(!loan){
-        res.status(200).json(loan)
-      }else{
-        res.status(500).send("json object returned empty")
-      }
-    })
-    .catch(err => {
-      res.status(500).json(err)
-    })
+    const foundLoan = await Loan.findById(req.params.loanId)
+    if (!foundLoan._id) return res.status(404).json({ message: "Solicit not found." });
+    if (foundLoan.solicitedBy !== solicitedBy) return res.status(401).json({ message: 'You are not the owner of that solicit.' });
+    foundLoan.update(changes)
+    .then(loan => res.status(200).json({ loan }))
+    .catch(err => res.status(500).json({ message: err.message }))
   })
   .get('/:loanId', (req,res) => {
     const id = req.params.loanId;
     Loan.find({_id : id})
     .then(loan => {
-        [loan] = loan
-        res.status(200).json(loan)
+        res.status(200).json({loan})
     })
     .catch(err => {
-      res.status(500).json(err)
+      res.status(500).json({err})
     })
   })
 

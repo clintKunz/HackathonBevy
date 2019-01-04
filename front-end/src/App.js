@@ -44,6 +44,15 @@ const Container = styled.div`
 `;
 
 class App extends React.Component {
+  // make and break refresh token flow
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isLoggedIn && this.props.isLoggedIn) {
+      this.refreshToken = setInterval(() => this.props.refreshToken(), 10000);
+    } else if (prevProps.isLoggedIn && !this.props.isLoggedIn) {
+      clearInterval(this.refreshToken)
+    }
+  }
+  
   render() {
     return (
       <Container>

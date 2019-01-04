@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import actions from '../actions';
+const { createLoan } = actions;
 
 const Form = styled.form`
     color: white;
@@ -22,11 +24,11 @@ const Form = styled.form`
 
 class CreateSolicitBorrow extends Component {
     state = {
-        arp: null,
+        interest: null,
         lengthMonths: null,
-        loanAmt: null,
+        amount: null,
         pitch: '',
-        startPayback: null,
+        startDate: null,
         loanType: '',
     };
 
@@ -38,9 +40,17 @@ class CreateSolicitBorrow extends Component {
         })
     };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        const { interest } = this.state.interest;
+        //console.log("create Loan with interest of", interest);
+        createLoan(interest);
+        
+    };
+
     render() {
         return (
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
                 <fieldset>
                     <label htmlFor="loanType">
                         Loan Type
@@ -58,9 +68,9 @@ class CreateSolicitBorrow extends Component {
                         Start Date of Payback 
                         <input type="date" id="startPayback" name="startPayback" placeholder="mm-dd-yyyy" required value={this.state.startPayback} onChange={this.handleChange}/> 
                     </label>
-                    <label htmlFor="arp">
+                    <label htmlFor="interest">
                         Annual Percentage Rate
-                        <input type="number" id="arp" name="arp" placeholder="6%" required value={this.state.arp} onChange={this.handleChange}/> 
+                        <input type="number" id="interest" name="interest" placeholder="6%" required value={this.state.interest} onChange={this.handleChange}/> 
                     </label>
                     <label htmlFor="pitch">
                         Why do you need the loan?

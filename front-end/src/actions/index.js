@@ -8,6 +8,7 @@ Object.keys(apiMethods).forEach(methodName => {
     dispatch({ type: actionTypes[methodName].progress })
     apiMethods[methodName](...args)
       .then(response => {
+        // set token in localstorage
         if (response.data.token) localStorage.setItem('token', response.data.token);
         dispatch({ type: actionTypes[methodName].success, response: response.data });
       })

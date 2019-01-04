@@ -4,6 +4,9 @@ import { Route } from "react-router-dom";
 import styled from "styled-components";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
+
+import actions from './actions';
 import {
   faEnvelope,
   faKey,
@@ -25,6 +28,8 @@ import CreateSolicitBorrow from "./components/CreateSolicitBorrow";
 import CreateSolicitLend from "./components/CreateSolicitLend";
 import Background from "./components/Background";
 import Profile from "./components/Profile";
+const {refreshToken} = actions;
+
 library.add(
   faEnvelope,
   faKey,
@@ -52,7 +57,7 @@ class App extends React.Component {
       clearInterval(this.refreshToken)
     }
   }
-  
+
   render() {
     return (
       <Container>
@@ -79,4 +84,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state =>  ({
+  isLoggedIn: state.session.isLoggedIn,
+})
+
+export default withRouter(connect(mapStateToProps, {refreshToken})(App));

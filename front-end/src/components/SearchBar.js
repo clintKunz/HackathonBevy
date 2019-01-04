@@ -42,7 +42,7 @@ class SearchBar extends Component {
 
   componentDidMount() {
     this.props.searchLoans(this.state.type, '')
-    this.interval = setInterval(() => this.props.searchLoans(this.state.type, this.state.queryString), 10000);
+    this.interval = setInterval(() => this.props.searchLoans(this.state.type, this.state.queryString), 300);
   }
 
   componentWillUnmount() {
@@ -59,8 +59,14 @@ class SearchBar extends Component {
      return (
       <StyledContainer>
         <StyledInput type="text" placeholder="Search by Description" onChange={(e) => this.handleChange(e)}/>
-        <Radio selected={this.state.type === "borrower"} onClick={() => this.setType('borrower')}>borrowers</Radio>
-        <Radio selected={this.state.type === "lender"} onClick={() => this.setType('lender')}>lenders</Radio>
+        <Radio selected={this.state.type === "borrower"} onClick={(e) => {
+          this.setType('borrower'); 
+          this.handleChange(e)}
+          }>borrowers</Radio>
+        <Radio selected={this.state.type === "lender"} onClick={(e) => { 
+          this.setType('lender');
+          this.handleChange(e);}
+          }>lenders</Radio>
       </StyledContainer>
     ); 
   }

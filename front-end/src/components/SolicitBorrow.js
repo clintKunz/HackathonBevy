@@ -30,18 +30,19 @@ class SolicitBorrow extends Component {
   render(props) {
     return (
       <SolicitDiv>
-        <h3>Borrowing</h3>
+        <h3>{this.props.solicit.solicitType}</h3>
         {/* <h3>name: {this.props.solicit.name}</h3> */}
         <h4>User: {this.props.solicit.solicitedBy.username}</h4>
         <h4>Loan Amount: {this.props.solicit.amount}</h4>
         <h4>Start Payback: {moment(this.props.solicit.startDate).format('MMM DD YYYY')}</h4>
         <h4>
-          Loan Length in Months from Start of Payback:{" "}
-          {this.props.solicit.lengthMonths}
+          
+          {`Repayment Length: ${this.props.solicit.lengthMonths} Months`}
         </h4>
         <h4>APR: {this.props.solicit.interest}%</h4>
         <h4>Type: {this.props.solicit.loanType} Loan</h4>
-        <h4>Why I Need to Borrow: {this.props.solicit.pitch}</h4>
+        {/* <h4>Why I Need to Borrow: {this.props.solicit.pitch}</h4> */}
+        <h4>Why I Need to Borrow: {this.props.solicit.pitch.length > 10 ? `${this.props.solicit.pitch.substring(0,10)}...` : this.props.solicit.pitch }</h4>
         <Link to="/solicit">See More</Link>
       </SolicitDiv>
     );

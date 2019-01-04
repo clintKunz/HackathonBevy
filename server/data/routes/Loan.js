@@ -24,22 +24,14 @@ router
     res.status(200).json({ loans: user.loans });
   })
   .get('/lends', (req, res) => {
-    const { queryType, queryString } = req.body;
-    Loan.find({solicitType: 'borrower'})
-    .where()
+    const { type, string } = req.query;
+    Loan.find({solicitType: type, description: {$regex: string}})
       .then(loans => {
         res.status(200).json({loans})
       }).catch(err => {
         res.status(500).json({ message: err.message })
-      })  })
-  .get('/borrows', (req, res) => {
-    Loan.find({solicitType: 'lender'})
-      .then(loans => {
-        res.status(200).json({loans})
-      }).catch(err => {
-        res.status(500).json({ message: err.message })
-      })
-  })
+      });
+    })
   .get('/mine', passport.authenticate('bearer'), (req, res) => {
     User.findById(req.user._id)
       .then(user => {

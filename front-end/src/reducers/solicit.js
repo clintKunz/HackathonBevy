@@ -1,5 +1,5 @@
 import actionTypes from '../actions/actionTypes';
-const {getLoans, createLoan, updateLoan} = actionTypes;
+const {searchLoans, createLoan, updateLoan} = actionTypes;
 
 const defaultState = {
   solicits: [],
@@ -7,7 +7,7 @@ const defaultState = {
 
 const solicit = (state=defaultState, action) => {
   switch(action.type) {
-    case (getLoans.success):
+    case (searchLoans.success):
       return {
         ...state,
         solicits: action.response.data.loans,

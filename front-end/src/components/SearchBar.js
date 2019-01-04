@@ -20,19 +20,17 @@ const StyledInput = styled.input`
   padding: 0 1rem;
 `;
 
-const Radioi = styled.button`
-  color: props => selected ? 1y
-  
+const Radio = styled.button`
+  background-color: ${(props) => props.selected ? 'lightblue' : 'lightgray'};
 `;
 
-class SearchBar extends Component => {
+class SearchBar extends Component {
   state = {
     type: 'borrowers',
-
   }
   
   handleChange = (e) => {
-    props.searchLoans(this.state.type, e.value);
+    this.props.searchLoans(this.state.type, e.target.value);
   }
   
   setType(string) {
@@ -44,9 +42,9 @@ class SearchBar extends Component => {
   render() {
      return (
       <StyledContainer>
-        <StyledInput type="text" placeholder="Search by Name" onChange={(e) => handleChange(e)}/>
-        <Radio selected={this.state.type === "borrowers"} onClick={() => setType('borrowers')}>borrowers</Radio>
-        <Radio selected={this.state.type === "lenders"} onClick={() => setType('lenders')}>lenders</Radio>
+        <StyledInput type="text" placeholder="Search by Name" onChange={(e) => this.handleChange(e)}/>
+        <Radio selected={this.state.type === "borrowers"} onClick={() => this.setType('borrowers')}>borrowers</Radio>
+        <Radio selected={this.state.type === "lenders"} onClick={() => this.setType('lenders')}>lenders</Radio>
         <FontAwesomeIcon icon="search" className="search" />
       </StyledContainer>
     ); 

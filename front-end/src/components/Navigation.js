@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+<<<<<<< HEAD
+import { NavLink, Route } from "react-router-dom";
+import NavigationSolicitsMenu from "./NavigationSolicitsMenu";
+
+=======
 import { NavLink, Link } from "react-router-dom";
 import {connect} from 'react-redux';
+>>>>>>> master
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -25,15 +31,16 @@ const NavHeader = styled.p`
 const ElementsContainer = styled.div`
   width: 75%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: center;
 `;
 
-const Elements = styled(NavLink)`
+export const Elements = styled(NavLink)`
   font-size: 1.6rem;
   font-family: ubuntu, sans-serif;
   text-decoration: none;
-  color: grey;
+  color: black;
+  margin-right: 15px; 
   &:hover {
     color: grey;
   }
@@ -71,8 +78,13 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
+<<<<<<< HEAD
+          <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
+          <Elements to="/login">Sign In</Elements>
+=======
           <Elements to="/filter">Filters</Elements>
           <Elements to="/search">Search</Elements>
+>>>>>>> master
         </ElementsContainer>
       </Nav>
     );

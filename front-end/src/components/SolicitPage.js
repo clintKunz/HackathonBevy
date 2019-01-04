@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import moment from "moment"
 
 const SolicitContainer = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ class SolicitPage extends React.Component {
             <SolicitItems><th>Length in Months: {this.state.solicit.lengthMonths} months</th></SolicitItems>
             <SolicitItems><th>Type: {this.state.solicit.loanType}</th></SolicitItems>
             <SolicitItems><th>APR: {this.state.solicit.interest}%</th></SolicitItems>
-            <SolicitItems><th>Start Payback Date: {this.state.solicit.startDate}</th></SolicitItems>
+            <SolicitItems><th>Start Payback Date: {moment(this.state.solicit.startDate).format('MMM-DD-YYYY')}</th></SolicitItems>
             <SolicitItems><th>Pitch: {this.state.solicit.pitch}</th></SolicitItems>
             <SolicitItems><th>Comments: {this.state.Comment}</th></SolicitItems>
           </tbody>

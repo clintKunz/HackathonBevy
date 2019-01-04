@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import NavigationSolicitsMenu from "./NavigationSolicitsMenu";
 import { connect } from "react-redux";
 
-import { NavLink, Link } from "react-router-dom";
-import {connect} from 'react-redux';
 const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -77,7 +75,6 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-          <Route path="/solicits" render={props => <NavigationSolicitsMenu {...props} />} />
           <Elements to="/login">Sign In</Elements>
           <Elements to="/filter">Filters</Elements>
           <Elements to="/search">Search</Elements>

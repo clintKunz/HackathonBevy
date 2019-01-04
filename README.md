@@ -1,6 +1,6 @@
-# YMMV - Your Mileage May Vary
+# Bevy is for Loans
 
-YMMV is an app that takes into account the various, disorganized ways that people with food allergies/sensistivies have to gather their information about what to eat. I know that nobody is reading this yet, so I'm just going to use this file to plan out my app.
+A place where people can ask for loans and offer up loans on a peer-to-peer basis. 
 
 - MERN
 - Redux

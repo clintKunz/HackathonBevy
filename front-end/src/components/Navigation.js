@@ -15,7 +15,7 @@ const Nav = styled.nav`
   position: sticky;
   top: 0px;
   left: 0px;
-  z-index: 2;
+  z-index: 100;
   background: #5abd9a;
   padding: 1rem 0;
 `;
@@ -77,7 +77,6 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-          <Elements to="/filter">Filters</Elements>
           <NavigationSolicitsMenu />
           <Elements to="/login" onClick={() => this.props.logout()}>Log Out</Elements>
         </ElementsContainer>

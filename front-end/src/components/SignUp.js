@@ -10,8 +10,8 @@ const { register } = actions;
 const StyledSignUpComp = styled.div`
   font-family: sans-serif;
   font-size: 1.6rem;
-  width: 28rem;
-  position: absolute;
+  width: 28rem; 
+  position: relative; 
   top: 50%;
   left: 50%;
   color: #d1e7df;

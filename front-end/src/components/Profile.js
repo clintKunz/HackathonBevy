@@ -36,7 +36,6 @@ const StyledDescription = styled.h2`
 class Profile extends React.Component {
 
   componentDidMount() {
-    console.log('hi')
     this.props.getMyLoans();
   }
 

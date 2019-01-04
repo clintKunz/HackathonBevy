@@ -46,7 +46,6 @@ class Profile extends React.Component {
 
   render() {
     const { user } = this.props;   
-    if (!user.loans || !user.loans.length) return <div>You have no solicits.</div>
     return (
       <>
         <StyledContainer>
@@ -71,6 +70,7 @@ class Profile extends React.Component {
         <StyledContainer>
           <StyledDescription>
             <label htmlFor="">my loans</label>
+            { !user.loans || !user.loans.length ? <div>You have no loans.</div> :
             <p>{user.loans.map(loan => {
               return( 
               <LoanWrap>
@@ -80,7 +80,7 @@ class Profile extends React.Component {
                 <p>Loan Interest: {loan.interest}</p>
               </LoanWrap>
               )
-            })}</p>
+            })}</p>}
           </StyledDescription>
         </StyledContainer>  
       </>

@@ -42,7 +42,6 @@ router
               exp: Date.now() + (1000 * 60 * 5),
             };
             const token = jwt.sign(payload, secret);
-            console.log(payload);
             res.status(200).json({ user, token });
           }).catch(err => res.status(500).json({ message: err.message || 'Failed to log in.' }));
       }).catch(err => {

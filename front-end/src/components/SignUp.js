@@ -111,6 +111,13 @@ class SignUpForm extends React.Component {
       loading: false
     };
   }
+
+  componentDidUpdate() {
+    if (this.props.isLoggedIn) {
+      this.props.history.push("/solicits/public");
+    }
+  }
+
   handleInputChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -145,7 +152,7 @@ class SignUpForm extends React.Component {
               placeholder="Enter Username"
               value={this.state.username}
               onChange={this.handleInputChange}
-              autocomplete="off"
+              autoComplete="off"
               required
             />
           </div>
@@ -157,7 +164,7 @@ class SignUpForm extends React.Component {
               placeholder="Enter Password"
               value={this.state.password}
               onChange={this.handleInputChange}
-              autocomplete="off"
+              autoComplete="off"
               required
             />
           </div>
@@ -170,7 +177,7 @@ class SignUpForm extends React.Component {
               name="email"
               value={this.state.email}
               onChange={this.handleInputChange}
-              autocomplete="off"
+              autoComplete="off"
               required
             />
           </div>
@@ -183,7 +190,7 @@ class SignUpForm extends React.Component {
               name="zipCode"
               value={this.state.zipCode}
               onChange={this.handleInputChange}
-              autocomplete="off"
+              autoComplete="off"
               required
             />
           </div>
@@ -195,7 +202,7 @@ class SignUpForm extends React.Component {
               name="creditScore"
               value={this.state.creditScore}
               onChange={this.handleInputChange}
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <button className="sign-up-btn" type="submit">
@@ -210,4 +217,10 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default connect(null, { register })(SignUpForm);
+const mapStateToProps = state => {
+  return {
+    isLoggedIn: state.session.isLoggedIn
+  };
+};
+
+export default connect(mapStateToProps, { register })(SignUpForm);

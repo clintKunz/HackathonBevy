@@ -23,7 +23,7 @@ const Form = styled.form`
     }
 `;
 
-class CreateSolicitLend extends Component {
+class CreateSolicitBorrow extends Component {
     state = {
         interest: '',
         lengthMonths: '',
@@ -35,7 +35,7 @@ class CreateSolicitLend extends Component {
 
     componentDidUpdate(prevProps) {
         if (!prevProps.createLoanSuccess && this.props.createLoanSuccess) {
-            this.props.history.push('/');
+            this.props.history.push('/solicits');
         }
     }
 
@@ -52,7 +52,7 @@ class CreateSolicitLend extends Component {
         const loan = this.state;
         //console.log("create Loan with interest of", interest);
         this.props.createLoan({...loan, solicitType: 'lender'});
-        
+        this.props.history.push('/solicits')
     };
 
     render() {
@@ -90,4 +90,4 @@ class CreateSolicitLend extends Component {
     }
 }
 
-export default connect(null, {createLoan})(CreateSolicitLend);
+export default connect(null, {createLoan})(CreateSolicitBorrow);

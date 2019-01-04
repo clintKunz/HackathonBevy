@@ -52,7 +52,7 @@ class CreateSolicitBorrow extends Component {
         const loan = this.state;
         //console.log("create Loan with interest of", interest);
         this.props.createLoan({...loan, solicitType: 'borrower'});
-        
+        this.props.history.push('/solicits');
     };
 
     render() {

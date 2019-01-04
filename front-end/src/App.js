@@ -16,7 +16,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 //components
-import Auth from "./components/Auth";
 import Navigation from "./components/Navigation";
 import LogIn from "./components/Login.js";
 import SolicitContainer from "./components/SoliticContainer";

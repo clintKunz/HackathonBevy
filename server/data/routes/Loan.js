@@ -44,7 +44,7 @@ router
         res.status(200).json(savedLoan);
       }).catch(err => res.status(500).json({ message: err.message }))
   })
-  .put('/:loanId', (req,res) => {
+  .put('/:loanId', passport.authenticate('bearer'), (req,res) => {
     const changes = req.body;
     const solicitedBy = req.user._id;
     const finalChanges = {...changes, solicitedBy}

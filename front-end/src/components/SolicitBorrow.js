@@ -52,7 +52,7 @@ class SolicitBorrow extends Component {
         <h4>APR: {this.props.solicit.interest}%</h4>
         <h4>Type: {this.props.solicit.loanType} Loan</h4>
         {/* <h4>Why I Need to Borrow: {this.props.solicit.pitch}</h4> */}
-        <h4>Why I Need to Borrow: {this.props.solicit.pitch.length > 10 ? `${this.props.solicit.pitch.substring(0,10)}...` : this.props.solicit.pitch }</h4>
+        <h4>Description: {this.props.solicit.pitch.length > 10 ? `${this.props.solicit.pitch.substring(0,10)}...` : this.props.solicit.pitch }</h4>
         <Link to={`/solicit/${this.props.solicit._id}`}>See More</Link>
       </SolicitDiv>
     );

@@ -22,7 +22,8 @@ const StyledInput = styled.input`
 
 const Radio = styled.button`
   background-color: ${(props) => props.selected ? 'lightgreen' : 'white'};
-
+  padding: 1px 4px; 
+  border-radius: 5px; 
 `;
 
 class SearchBar extends Component {
@@ -51,7 +52,7 @@ class SearchBar extends Component {
   render() {
      return (
       <StyledContainer>
-        <StyledInput type="text" placeholder="Search by Name" onChange={(e) => this.handleChange(e)}/>
+        <StyledInput type="text" placeholder="Search by Description" onChange={(e) => this.handleChange(e)}/>
         <Radio selected={this.state.type === "borrower"} onClick={() => this.setType('borrower')}>borrowers</Radio>
         <Radio selected={this.state.type === "lender"} onClick={() => this.setType('lender')}>lenders</Radio>
       </StyledContainer>

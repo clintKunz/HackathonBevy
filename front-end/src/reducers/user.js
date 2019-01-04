@@ -13,11 +13,12 @@ const session = (state = defaultState, action) => {
         profile: action.response.user,
       }
     case (getMyLoans.success):
+      const { loans } = action.response;
       return {
         ...state,
         profile: {
           ...state.profile,
-          loans: action.response.loans,
+          loans: loans.length ? loans : [],
         }
       }
     default:

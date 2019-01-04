@@ -32,6 +32,11 @@ const StyledContainer = styled.div`
 const StyledDescription = styled.h2`
   margin: 1rem 0;
 `;
+const LoanWrap = styled.div`
+  margin: 15px; 
+  border: 1px solid #5abd9a;
+  padding: 5px; 
+`;
 
 class Profile extends React.Component {
 
@@ -47,25 +52,34 @@ class Profile extends React.Component {
           <img src={!user.img ? profilePic : user.img} alt="profile-pic" className="profilePic" />
           <StyledDescription>
             <label htmlFor="">name</label>
-            <p>{user.username}</p>
+            <h2>{user.username}</h2>
           </StyledDescription>
           <StyledDescription>
             <label htmlFor="">credit score</label>
-            <p>{user.creditScore}</p>
+            <h2>{user.creditScore}</h2>
           </StyledDescription>
           <StyledDescription>
             <label htmlFor="">email</label>
-            <p>{user.email}</p>
+            <h2>{user.email}</h2>
           </StyledDescription>
           <StyledDescription>
             <label htmlFor="">created on</label>
-            <p>{moment(user.signUpDate).format('MMM-DD-YYYY')}</p>
+            <h2>{moment(user.signUpDate).format('MMM-DD-YYYY')}</h2>
           </StyledDescription>
         </StyledContainer>
         <StyledContainer>
           <StyledDescription>
             <label htmlFor="">my loans</label>
-            <p></p>
+            <p>{user.loans.map(loan => {
+              return( 
+              <LoanWrap>
+                <p>Loan ID: {loan._id}</p>
+                <p>Loan Type: {loan.solicitType}</p>
+                <p>Loan Amount: ${loan.amount}</p>
+                <p>Loan Interest: {loan.interest}</p>
+              </LoanWrap>
+              )
+            })}</p>
           </StyledDescription>
         </StyledContainer>  
       </>

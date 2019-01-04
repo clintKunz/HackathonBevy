@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import NavigationSolicitsMenu from "./NavigationSolicitsMenu";
 import { connect } from "react-redux";
 
@@ -76,7 +76,9 @@ class Navigation extends Component {
         </NavHeader>
         <ElementsContainer>
           <NavigationSolicitsMenu />
-          <Elements to="/login">Log Out</Elements>
+          <Elements to="/login" >Log Out</Elements>
+          <Elements to="/filter">Filters</Elements>
+          <Elements to="/search">Search</Elements>
         </ElementsContainer>
       </Nav>
     );

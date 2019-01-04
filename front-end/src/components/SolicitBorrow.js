@@ -21,10 +21,18 @@ const SolicitDiv = styled.div`
     margin-bottom : 20px;
     h3{
         text-decoration:underline;
-        margin-top:10px;
+        margin:20px 0 10px;
     }
     h4{
         margin:0% 5%;
+    }
+    a {
+      text-decoration: none; 
+      color: white; 
+      border: 1px solid green; 
+      padding: 5px; 
+      border-radius: 5px; 
+      margin: 10px;
     }
 `;
 
@@ -32,7 +40,7 @@ class SolicitBorrow extends Component {
   render(props) {
     return (
       <SolicitDiv>
-        <h3>{this.props.solicit.solicitType}</h3>
+        <h3>{this.props.solicit.solicitType.toUpperCase().slice(0, -2)}ING</h3>
         {/* <h3>name: {this.props.solicit.name}</h3> */}
         <h4>User: {this.props.solicit.solicitedBy.username}</h4>
         <h4>Loan Amount: {this.props.solicit.amount}</h4>

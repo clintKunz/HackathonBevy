@@ -19,9 +19,14 @@ const Wrapper = styled.div`
   z-index: 10;
 `;
 const StyledLink = styled(Link)`
-  margin: 2rem 0;
+  margin-top: 2rem;
+  font-size: 1.5rem;
   color: #eee;
   font-family: sans-serif;
+  text-decoration: none; 
+  :nth-child(3) {
+    margin-bottom: 2rem; 
+  }
 `;
 class SolicitContainer extends Component {
 

@@ -39,8 +39,7 @@ const Container = styled.div`
   position: relative;
   max-width: 500px;
   margin: 0 auto;
-  border: 1px solid red; 
-  height: 100vh;
+  height: minmax(100vh, 100%);
   background: #0e0e0e;
 `;
 

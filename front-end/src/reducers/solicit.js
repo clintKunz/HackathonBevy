@@ -10,7 +10,7 @@ const solicit = (state=defaultState, action) => {
     case (searchLoans.success):
       return {
         ...state,
-        solicits: action.response.data.loans,
+        solicits: action.response.loans,
       }
     default:
       return state

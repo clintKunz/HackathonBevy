@@ -50,7 +50,7 @@ router
 
       });
   })
-  .get('/profile', passport.authenticate('Bearer'), (req, res) => {
+  .get('/profile', passport.authenticate('bearer'), (req, res) => {
     const { _id: userId } = req.user;
     User
       .findById(userId)

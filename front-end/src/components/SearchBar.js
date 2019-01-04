@@ -26,7 +26,7 @@ const Radio = styled.button`
 
 class SearchBar extends Component {
   state = {
-    type: 'borrowers',
+    type: 'borrower',
   }
   
   handleChange = (e) => {
@@ -43,8 +43,8 @@ class SearchBar extends Component {
      return (
       <StyledContainer>
         <StyledInput type="text" placeholder="Search by Name" onChange={(e) => this.handleChange(e)}/>
-        <Radio selected={this.state.type === "borrowers"} onClick={() => this.setType('borrowers')}>borrowers</Radio>
-        <Radio selected={this.state.type === "lenders"} onClick={() => this.setType('lenders')}>lenders</Radio>
+        <Radio selected={this.state.type === "borrower"} onClick={() => this.setType('borrower')}>borrowers</Radio>
+        <Radio selected={this.state.type === "lender"} onClick={() => this.setType('lender')}>lenders</Radio>
         <FontAwesomeIcon icon="search" className="search" />
       </StyledContainer>
     ); 

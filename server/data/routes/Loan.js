@@ -16,27 +16,22 @@ passport.deserializeUser(function (user, done) {
 const router = express.Router();
 
 router
-  .get('/', passport.authenticate('Bearer'), async (req, res) => {
-    // grab user and return loans that belong to them
-    const { _id: userId } = req.user;
-    const user = await User.findById(userId);
-    if (!user._id) return res.status(404).json({ message: 'User not found.'})
-    res.status(200).json({ loans: user.loans });
-  })
-  .get('/lends', (req, res) => {
+  .get('/', (req, res) => {
     const { type, string } = req.query;
-    Loan.find({solicitType: type, description: {$regex: string}})
+    const query = '.*' + string + '.*';
+    Loan.find({solicitType: type, pitch: { $regex : new RegExp(query, "i")} })
       .then(loans => {
         res.status(200).json({loans})
       }).catch(err => {
         res.status(500).json({ message: err.message })
       });
-    })
-  .get('/mine', passport.authenticate('bearer'), (req, res) => {
-    User.findById(req.user._id)
-      .then(user => {
-        res.status(200).json({ loans: user.loans });
-      }).catch(err => res.status(500).json({ message: err.message }))
+  })
+  .get('/mine', passport.authenticate('bearer'), async (req, res) => {
+    // grab user and return loans that belong to them
+    const { _id: userId } = req.user;
+    const user = await User.findById(userId);
+    if (!user._id) return res.status(404).json({ message: 'User not found.'})
+    res.status(200).json({ loans: user.loans });
   })
   .post('/', passport.authenticate('bearer'), (req, res) => {
     // grab details and make new loan

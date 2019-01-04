@@ -46,7 +46,7 @@ class Profile extends React.Component {
 
   render() {
     const { user } = this.props;   
-    if (!user.loans || !user.loans.length) return <div></div>
+    if (!user.loans || !user.loans.length) return <div>You have no solicits.</div>
     return (
       <>
         <StyledContainer>

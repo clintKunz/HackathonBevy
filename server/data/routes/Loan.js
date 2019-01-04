@@ -20,6 +20,7 @@ router
     const { type, string } = req.query;
     const query = '.*' + string + '.*';
     Loan.find({solicitType: type, pitch: { $regex : new RegExp(query, "i")} })
+      .populate({path: 'solicitedBy', select: 'username'})
       .then(loans => {
         res.status(200).json({loans})
       }).catch(err => {

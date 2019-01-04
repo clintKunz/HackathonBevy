@@ -2,7 +2,7 @@ import actionTypes from '../actions/actionTypes';
 const {searchLoans, createLoan, updateLoan} = actionTypes;
 
 const defaultState = {
-  solicits: [],
+  searchResults: [],
 };
 
 const solicit = (state=defaultState, action) => {
@@ -10,7 +10,7 @@ const solicit = (state=defaultState, action) => {
     case (searchLoans.success):
       return {
         ...state,
-        solicits: action.response.loans,
+        searchResults: action.response.loans,
       }
     default:
       return state

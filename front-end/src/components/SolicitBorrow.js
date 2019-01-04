@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const SolicitDiv = styled.div`
     display: flex; 
@@ -30,17 +31,17 @@ class SolicitBorrow extends Component {
     return (
       <SolicitDiv>
         <h3>Borrowing</h3>
-        {/* <h3>name: {this.props.solicitBorrow.name}</h3> */}
-        <h4>User: {this.props.solicitBorrow.id}</h4>
-        <h4>Loan Amount: {this.props.solicitBorrow.loanAmt}</h4>
-        <h4>Start Payback: {this.props.solicitBorrow.startPayback}</h4>
+        {/* <h3>name: {this.props.solicit.name}</h3> */}
+        <h4>User: {this.props.solicit.solicitedBy.username}</h4>
+        <h4>Loan Amount: {this.props.solicit.amount}</h4>
+        <h4>Start Payback: {moment(this.props.solicit.startDate).format('MMM DD YYYY')}</h4>
         <h4>
           Loan Length in Months from Start of Payback:{" "}
-          {this.props.solicitBorrow.lengthMonths}
+          {this.props.solicit.lengthMonths}
         </h4>
-        <h4>APR: {this.props.solicitBorrow.arp}%</h4>
-        <h4>Type: {this.props.solicitBorrow.type} Loan</h4>
-        <h4>Why I Need to Borrow: {this.props.solicitBorrow.pitch}</h4>
+        <h4>APR: {this.props.solicit.interest}%</h4>
+        <h4>Type: {this.props.solicit.loanType} Loan</h4>
+        <h4>Why I Need to Borrow: {this.props.solicit.pitch}</h4>
         <Link to="/solicit">See More</Link>
       </SolicitDiv>
     );

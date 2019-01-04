@@ -12,7 +12,7 @@ const StyledSignUpComp = styled.div`
   font-size: 1.6rem;
   width: 28rem; 
   position: relative; 
-  top: 50%;
+  top: 30%;
   left: 50%;
   color: #d1e7df;
   transform: translate(-50%, -50%);

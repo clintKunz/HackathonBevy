@@ -11,7 +11,8 @@ import {
   faMapPin,
   faCreditCard,
   faDollarSign,
-  faCommentsDollar
+  faCommentsDollar,
+  faSearch
 } from "@fortawesome/free-solid-svg-icons";
 
 //components
@@ -24,7 +25,7 @@ import SolicitPage from "./components/SolicitPage";
 import CreateSolicitBorrow from "./components/CreateSolicitBorrow";
 import CreateSolicitLend from "./components/CreateSolicitLend";
 import Background from "./components/Background";
-
+import Profile from "./components/Profile";
 library.add(
   faEnvelope,
   faKey,
@@ -32,7 +33,8 @@ library.add(
   faMapPin,
   faCreditCard,
   faDollarSign,
-  faCommentsDollar
+  faCommentsDollar,
+  faSearch
 );
 const Container = styled.div`
   position: relative;
@@ -48,28 +50,31 @@ class App extends React.Component {
       <Container>
         <Navigation />
         <Route
-          exact
           path="/solicits"
           render={props => <SolicitContainer {...props} />}
         />
-        <Route exact path="/login" render={props => <LogIn {...props} />} />
-        <Route exact path="/signup" render={props => <SignUp {...props} />} />
+        <Route path="/login" render={props => <LogIn {...props} />} />
+        <Route path="/signup" render={props => <SignUp {...props} />} />
         <Route
-          exact
           path="/create-borrow"
           render={props => <CreateSolicitBorrow {...props} />}
         />
         <Route
-          exact
           path="/create-lend"
           render={props => <CreateSolicitLend {...props} />}
         />
+<<<<<<< HEAD
         <Route
           exact
           path="/solicit"
           render={props => <SolicitPage {...props} />}
         />
         {/* <Background /> */}
+=======
+        <Route path="/solicit" render={props => <SolicitPage {...props} />} />
+        <Route path="/profile" render={props => <Profile {...props} />} />
+        <Background />
+>>>>>>> front-end
       </Container>
     );
   }

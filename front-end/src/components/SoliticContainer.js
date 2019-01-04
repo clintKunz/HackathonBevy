@@ -14,9 +14,14 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 10;
 `;
-const StyledLink = styled(Link)``;
-
+const StyledLink = styled(Link)`
+  margin: 2rem 0;
+  color: #eee;
+  font-family: sans-serif;
+`;
 class SolicitContainer extends Component {
   state = {
     solicitsBorrows: [

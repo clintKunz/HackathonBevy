@@ -1,6 +1,5 @@
 import actionTypes from '../actions/actionTypes';
-import { refreshToken } from '../helpers/methods';
-const { login, register, logout } = actionTypes;
+const { login, register, refreshToken } = actionTypes;
 
 const defaultState = {
   inProgress: false,

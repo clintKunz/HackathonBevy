@@ -62,7 +62,7 @@ class App extends React.Component {
           path="/create-lend"
           render={props => <CreateSolicitLend {...props} />}
         />
-        <Route path="/solicit" render={props => <SolicitPage {...props} />} />
+        <Route path="/solicit/:id" render={props => <SolicitPage {...props} />} />
         <Route path="/profile" render={props => <Profile {...props} />} />
         {/* <Background /> */}
       </Container>

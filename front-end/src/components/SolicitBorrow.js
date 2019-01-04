@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link , Route } from "react-router-dom";
+import SolicitPage from './SolicitPage';
+
 import moment from 'moment';
 
 const SolicitDiv = styled.div`

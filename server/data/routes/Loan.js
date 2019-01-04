@@ -66,11 +66,8 @@ router
     const id = req.params.loanId;
     Loan.find({_id : id})
     .then(loan => {
-      if(loan.length){
+        [loan] = loan
         res.status(200).json(loan)
-      }else{
-        res.status(500).send('loan with specified id returned empty')
-      }
     })
     .catch(err => {
       res.status(500).json(err)

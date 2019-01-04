@@ -24,21 +24,30 @@ class SolicitPage extends React.Component {
     APR: 3,
     StartPayback: "Date",
     Pitch: "",
-    Comment: []
+    Comment: [],
+    solicit:{}
   };
+  componentDidMount(){
+    axios.get(`http://localhost:5000/api/loans/${this.props.match.params.id}`)
+    .then(res => {
+      this.setState({solicit : res.data})
+      console.log(this.state.solicit)
+    })
+  }
   render() {
+    console.log("PROPS::::::::::" , this.props)
     return (
       <SolicitContainer>
         <table>
           <tbody>
-            <SolicitItems><th>Loan ID: {this.state.Id}</th></SolicitItems>
-            <SolicitItems><th>User ID: {this.state.UserId}</th></SolicitItems>
-            <SolicitItems><th>Loan Amount: {this.state.LoanAmt}</th></SolicitItems>
-            <SolicitItems><th>Length in Months: {this.state.LengthMonths} months</th></SolicitItems>
-            <SolicitItems><th>Type: {this.state.Type}</th></SolicitItems>
-            <SolicitItems><th>APR: {this.state.APR}%</th></SolicitItems>
-            <SolicitItems><th>Start Payback Date: {this.state.StartPayback}</th></SolicitItems>
-            <SolicitItems><th>Pitch: {this.state.Pitch}</th></SolicitItems>
+            <SolicitItems><th>Loan ID: {this.state.solicit._id}</th></SolicitItems>
+            <SolicitItems><th>User ID: {this.state.solicit.borrower}</th></SolicitItems>
+            <SolicitItems><th>Loan Amount: {this.state.solicit.amount}</th></SolicitItems>
+            <SolicitItems><th>Length in Months: {this.state.solicit.lengthMonths} months</th></SolicitItems>
+            <SolicitItems><th>Type: {this.state.solicit.loanType}</th></SolicitItems>
+            <SolicitItems><th>APR: {this.state.solicit.interest}%</th></SolicitItems>
+            <SolicitItems><th>Start Payback Date: {this.state.solicit.startDate}</th></SolicitItems>
+            <SolicitItems><th>Pitch: {this.state.solicit.pitch}</th></SolicitItems>
             <SolicitItems><th>Comments: {this.state.Comment}</th></SolicitItems>
           </tbody>
         </table>

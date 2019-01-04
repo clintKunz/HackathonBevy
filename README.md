@@ -4,6 +4,4 @@ A place where people can ask for loans and offer up loans on a peer-to-peer basi
 
 - MERN
 - Redux
-- Session httpOnly (passport)
-- Email confirm
-- Deploy full stack on Heroku (connect to Github)
+- JWT

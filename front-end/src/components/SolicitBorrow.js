@@ -3,6 +3,28 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const SolicitDiv = styled.div`
+<<<<<<< HEAD
+    display: flex; 
+    flex-direction: column; 
+    align-items : center;
+    font-size:1.45rem;
+    color: white; 
+    width : 66%;
+    height : 275px;
+    border: 2px solid green; 
+    -webkit-border-radius: 100px;
+    -webkit-border-top-right-radius: 0;
+    border-radius: 100%;
+    border-top-right-radius: 0;
+    margin-bottom : 20px;
+    h3{
+        text-decoration:underline;
+        margin-top:10px;
+    }
+    h4{
+        margin:0% 5%;
+    }
+=======
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +39,7 @@ const SolicitDiv = styled.div`
   border-radius: 100px;
   border-top-right-radius: 0;
   margin-bottom: 20px;
+>>>>>>> 9182ee673cb5ba08e339de0b2b48e911d929dc3d
 `;
 
 class SolicitBorrow extends Component {

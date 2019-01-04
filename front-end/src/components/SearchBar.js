@@ -21,7 +21,8 @@ const StyledInput = styled.input`
 `;
 
 const Radio = styled.button`
-  background-color: ${(props) => props.selected ? 'lightblue' : 'lightgray'};
+  background-color: ${(props) => props.selected ? 'lightgreen' : 'white'};
+
 `;
 
 class SearchBar extends Component {
@@ -31,6 +32,14 @@ class SearchBar extends Component {
   
   handleChange = (e) => {
     this.props.searchLoans(this.state.type, e.target.value);
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.props.searchLoans(this.state.type, ''), 300);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
   
   setType(string) {
@@ -45,7 +54,6 @@ class SearchBar extends Component {
         <StyledInput type="text" placeholder="Search by Name" onChange={(e) => this.handleChange(e)}/>
         <Radio selected={this.state.type === "borrower"} onClick={() => this.setType('borrower')}>borrowers</Radio>
         <Radio selected={this.state.type === "lender"} onClick={() => this.setType('lender')}>lenders</Radio>
-        <FontAwesomeIcon icon="search" className="search" />
       </StyledContainer>
     ); 
   }

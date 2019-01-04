@@ -24,35 +24,6 @@ const StyledLink = styled(Link)`
   font-family: sans-serif;
 `;
 class SolicitContainer extends Component {
-  // state = {
-  //   solicitsBorrows: [
-  //     {
-  //       id: 100000,
-  //       name: "Chris Smith",
-  //       userId: 1023948092134,
-  //       loanAmt: 1000,
-  //       lengthMonths: 6,
-  //       type: "Auto Loan",
-  //       arp: 10,
-  //       startPayback: "2019-12-12",
-  //       pitch: "I need money."
-  //     }
-  //   ],
-  //   solicitLends: [
-  //     {
-  //       id: 1,
-  //       loanRangeStart: 200,
-  //       loanRangeStop: 1000,
-  //       loanAmt: 1000,
-  //       lengthMonths: 6,
-  //       type: "car",
-  //       arp: 10,
-  //       startPayback: "2019-12-12",
-  //       rating: 5,
-  //       userId: "1"
-  //     }
-  //   ]
-  // };
 
   render(props) {
     return (

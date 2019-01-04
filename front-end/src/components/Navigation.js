@@ -77,13 +77,9 @@ class Navigation extends Component {
           <NavLink to="/solicits">BEVY</NavLink>
         </NavHeader>
         <ElementsContainer>
-          <Elements to="/login">Sign In</Elements>
           <Elements to="/filter">Filters</Elements>
-          <Elements to="/search">Search</Elements>
           <NavigationSolicitsMenu />
           <Elements to="/login" onClick={() => this.props.logout()}>Log Out</Elements>
-          <Elements to="/filter">Filters</Elements>
-          <Elements to="/search">Search</Elements>
         </ElementsContainer>
       </Nav>
     );

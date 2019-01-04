@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { connect } from 'react-redux';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../images/Logo.png";
+import actions from '../actions';
+const { register } = actions;
 
 const StyledSignUpComp = styled.div`
   font-family: sans-serif;
@@ -206,4 +209,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default SignUpForm;
+export default connect(null, { register })(SignUpForm);

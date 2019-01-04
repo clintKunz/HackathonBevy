@@ -30,5 +30,9 @@ Object.keys(apiMethods).forEach(methodName => {
   }
 });
 
+actions.logout = dispatch => () => {
+  dispatch({ type: actionTypes.logout });
+}
+
 
   export default actions;

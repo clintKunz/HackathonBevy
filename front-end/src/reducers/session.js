@@ -1,5 +1,5 @@
 import actionTypes from '../actions/actionTypes';
-const { login, register } = actionTypes;
+const { login, register, logout } = actionTypes;
 
 const defaultState = {
   inProgress: false,
@@ -11,7 +11,7 @@ const session = (state = defaultState, action) => {
     case (login.progress): //'loginProgress'
       return {
         ...state,
-        isLoggedIn: true,
+        isLoggedIn: false,
         inProgress: true,
       }
     case (login.success): //'loginSuccess'
@@ -26,6 +26,30 @@ const session = (state = defaultState, action) => {
         isLoggedIn: false,
         inProgress: false,
         errorMessage: action.errorMessage,
+      }
+    case (register.progress): //'registerProgress'
+      return {
+        ...state,
+        isLoggedIn: false,
+        inProgress: true,
+      }
+    case (register.success): //'registerSuccess'
+      return {
+        ...state,
+        isLoggedIn: true,
+        inProgress: false,
+      }
+    case (register.error):
+      return {
+        ...state,
+        isLoggedIn: false,
+        inProgress: false,
+        errorMessage: action.errorMessage,
+      }
+    case (actionTypes .logout):
+      return {
+        ...state,
+        isLoggedIn: false,
       }
     default:
       return state

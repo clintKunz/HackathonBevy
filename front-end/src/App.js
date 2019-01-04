@@ -65,7 +65,7 @@ class App extends React.Component {
         />
         <Route path="/solicit" render={props => <SolicitPage {...props} />} />
         <Route path="/profile" render={props => <Profile {...props} />} />
-        <Background />
+        {/* <Background /> */}
       </Container>
     );
   }

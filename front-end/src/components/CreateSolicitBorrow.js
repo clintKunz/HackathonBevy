@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import actions from '../actions';
 const { createLoan } = actions;
 
@@ -24,13 +25,19 @@ const Form = styled.form`
 
 class CreateSolicitBorrow extends Component {
     state = {
-        interest: null,
-        lengthMonths: null,
-        amount: null,
+        interest: '',
+        lengthMonths: '',
+        amount: '',
         pitch: '',
-        startDate: null,
+        startDate: '',
         loanType: '',
     };
+
+    componentDidUpdate(prevProps) {
+        if (!prevProps.createLoanSuccess && this.props.createLoanSuccess) {
+            this.props.history.push('/');
+        }
+    }
 
     handleChange = (e) => {
         const { name, type, value } = e.target;
@@ -42,39 +49,39 @@ class CreateSolicitBorrow extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const { interest } = this.state.interest;
+        const loan = this.state;
         //console.log("create Loan with interest of", interest);
-        createLoan(interest);
+        this.props.createLoan({...loan, solicitType: 'borrower'});
         
     };
 
     render() {
         return (
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={this.handleSubmit.bind(this)}>
                 <fieldset>
                     <label htmlFor="loanType">
                         Loan Type
-                        <input type="text" id="loanType" name="loanType" placeholder="Auto, Personal, Home Remodel, Business" required value={this.state.loanType} onChange={this.handleChange}/> 
+                        <input type="text" id="loanType" name="loanType" placeholder="Auto, Personal, Home Remodel, Business"  value={this.state.loanType} onChange={(e) => this.handleChange(e)}/> 
                     </label>
-                    <label htmlFor="loanAmt">
+                    <label htmlFor="amount">
                         Loan Amount
-                        <input type="number" id="loanAmt" name="loanAmt" placeholder="3,000" required value={this.state.loanAmt} onChange={this.handleChange}/> 
+                        <input type="number" id="amount" name="amount" placeholder="3,000"  value={this.state.amount} onChange={(e) => this.handleChange(e)}/> 
                     </label>
                     <label htmlFor="lengthMonths">
                         Loan Length in Months 
-                        <input type="number" id="lengthMonths" name="lengthMonths" placeholder="24" required value={this.state.lengthMonths} onChange={this.handleChange}/> 
+                        <input type="number" id="lengthMonths" name="lengthMonths" placeholder="24"  value={this.state.lengthMonths} onChange={(e) => this.handleChange(e)}/> 
                     </label>
-                    <label htmlFor="startPayback">
+                    <label htmlFor="startDate">
                         Start Date of Payback 
-                        <input type="date" id="startPayback" name="startPayback" placeholder="mm-dd-yyyy" required value={this.state.startPayback} onChange={this.handleChange}/> 
+                        <input type="date" id="startDate" name="startDate" placeholder="mm-dd-yyyy"  value={this.state.startDate} onChange={(e) => this.handleChange(e)}/> 
                     </label>
                     <label htmlFor="interest">
                         Annual Percentage Rate
-                        <input type="number" id="interest" name="interest" placeholder="6%" required value={this.state.interest} onChange={this.handleChange}/> 
+                        <input type="number" id="interest" name="interest" placeholder="6%"  value={this.state.interest} onChange={(e) => this.handleChange(e)}/> 
                     </label>
                     <label htmlFor="pitch">
                         Why do you need the loan?
-                        <textarea type="text" id="pitch" name="pitch" placeholder="My business is expanding, and I need the funds to buy more inventory!" required value={this.state.pitch} onChange={this.handleChange}/> 
+                        <textarea type="text" id="pitch" name="pitch" placeholder="My business is expanding, and I need the funds to buy more inventory!"  value={this.state.pitch} onChange={(e) => this.handleChange(e)}/> 
                     </label>
                 </fieldset>
                 <button type="submit">Submit</button>
@@ -83,4 +90,4 @@ class CreateSolicitBorrow extends Component {
     }
 }
 
-export default CreateSolicitBorrow;
+export default connect(null, {createLoan})(CreateSolicitBorrow);

@@ -33,7 +33,7 @@ const corsOptions = {
 
 server.use(morgan());
 server.use(express.json());
-server.use(cors(corsOptions));
+server.use(cors());
 server.use(helmet());
 server.use(passport.initialize());
 server.use(passport.session());

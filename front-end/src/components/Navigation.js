@@ -42,9 +42,6 @@ export const Elements = styled(NavLink)`
   &:hover {
     color: grey;
   }
-  &.active {
-    border-bottom: 2px solid #0e0e0e;
-  }
 `;
 
 const FilterMenu = styled.div`
@@ -74,7 +71,7 @@ class Navigation extends Component {
     return (
       <Nav>
         <NavHeader>
-          <NavLink to="/solicits">BEVY</NavLink>
+          <Elements style={{fontSize: '3rem'}} to="/solicits">BEVY</Elements>
         </NavHeader>
         <ElementsContainer>
           <NavigationSolicitsMenu />

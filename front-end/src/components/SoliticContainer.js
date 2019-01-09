@@ -10,10 +10,10 @@ import SearchBar from "./SearchBar";
 const Wrapper = styled.div`
   max-width: 450px;
   margin: 0 auto;
+  min-height: 90vh;  
   margin-top: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
   z-index: 10;

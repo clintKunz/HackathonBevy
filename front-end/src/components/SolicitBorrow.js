@@ -42,7 +42,7 @@ class SolicitBorrow extends Component {
       <SolicitDiv>
         <h3>{this.props.solicit.solicitType.toUpperCase().slice(0, -2)}ING</h3>
         {/* <h3>name: {this.props.solicit.name}</h3> */}
-        <h4>User: {this.props.solicit.solicitedBy.username}</h4>
+        <h4>{this.props.solicit.solicitedBy.username.toUpperCase()}</h4>
         <h4>Loan Amount: {this.props.solicit.amount}</h4>
         <h4>Start Payback: {moment(this.props.solicit.startDate).format('MMM DD YYYY')}</h4>
         <h4>

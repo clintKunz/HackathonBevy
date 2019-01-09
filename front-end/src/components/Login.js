@@ -16,12 +16,10 @@ const { login } = actions;
 const StyledLoginComp = styled.div`
   font-family: sans-serif;
   font-size: 1.6rem;
-  width: 28rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  width: 60%;
+  height: 71vh; 
+  margin: 100px auto; 
   color: #d1e7df;
-  transform: translate(-50%, -50%);
   text-align: center;
   background: transparent;
   z-index: 2;

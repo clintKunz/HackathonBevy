@@ -21,8 +21,8 @@ const StyledContainer = styled.div`
 
   .profilePic {
     border: 5px solid #d1e7df;
-    border-radius: 50%;
-    width: 50%;
+    border-radius: 10%;
+    width: 70%;
     margin-bottom: 3rem;
   }
   p {

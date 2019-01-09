@@ -10,12 +10,10 @@ const { register } = actions;
 const StyledSignUpComp = styled.div`
   font-family: sans-serif;
   font-size: 1.6rem;
-  width: 28rem; 
-  position: relative; 
-  top: 30%;
-  left: 50%;
+  width: 60%;
+  
+  margin: 50px auto;   
   color: #d1e7df;
-  transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
   .logo {
@@ -65,21 +63,21 @@ const StyledSignUpComp = styled.div`
       background: none;
       width: 50%;
       transition: all 0.3s 0.3s ease-in-out;
-      position: relative;
+      /* position: relative; */
       border: 1px solid #5abd9a;
       outline: 0;
       color: white;
       cursor: pointer;
       span {
-        position: relative;
+        /* position: relative; */
         z-index: 10;
         border: none;
       }
       &::before {
         content: "";
-        position: absolute;
+        /*position: absolute;
         top: 0;
-        left: 0;
+        left: 0; */
         height: 100%;
         width: 3px;
         background: #5abd9a;

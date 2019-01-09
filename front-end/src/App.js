@@ -45,7 +45,7 @@ const Container = styled.div`
   position: relative;
   max-width: 500px;
   margin: 0 auto;
-  height: 1200px;
+  height: 100%;
   background: #0e0e0e;
 `;
 

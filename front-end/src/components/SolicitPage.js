@@ -10,9 +10,12 @@ const SolicitContainer = styled.div`
   font-family: ubuntu;
   color: white; 
   font-size: 1.9rem; 
-  margin: 15px;
+  margin: 30px 60px;
+  min-height: 90vh;
+  height: 100%; 
   span {
-    color: green;
+    color: white;
+    text-decoration: underline;
     font-weight: bold; 
   }
   h2, h3 {
